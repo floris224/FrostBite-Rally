@@ -28,10 +28,19 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             ""id"": ""f81917fd-c464-4b07-97c3-1a5f4746f268"",
             ""actions"": [
                 {
-                    ""name"": ""Drive"",
+                    ""name"": ""DriveForwards"",
                     ""type"": ""Value"",
-                    ""id"": ""aaaee034-9c59-410f-a9cc-c508bd803691"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""id"": ""dc206967-3746-45f9-8e03-9d40e51093e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""742977fd-e086-47ff-8ddc-d853f2f84b2c"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -39,57 +48,68 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""c0db4a98-2863-4c45-91c5-e1f135a09498"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""a1efd71c-3fd0-4e5a-a912-b0dcac31aa36"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drive"",
+                    ""action"": ""DriveForwards"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""f2a2f79c-a320-4e64-8c89-541dd4785509"",
+                    ""name"": ""positive"",
+                    ""id"": ""b0892167-4321-474e-9112-15bfab42a676"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drive"",
+                    ""action"": ""DriveForwards"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""d5571e2b-3421-4199-85f0-54e5e1a7316a"",
+                    ""name"": ""negative"",
+                    ""id"": ""eaf61c44-e0b9-4d46-8dda-8e245bc264b9"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drive"",
+                    ""action"": ""DriveForwards"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""f2ded58a-7f61-497a-a7a9-28b67c752f61"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""b1d9fa0c-75f8-401b-a74b-feef111cfc7b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""985421fd-b0a8-4f98-b040-abc8a1d55ea6"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drive"",
+                    ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""3a753630-4511-4fcd-bbcd-9c02e60fffdf"",
+                    ""name"": ""positive"",
+                    ""id"": ""b401d3b5-d1b7-4caa-aad9-b059aaf968b9"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drive"",
+                    ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -100,7 +120,8 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
 }");
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
-        m_Car_Drive = m_Car.FindAction("Drive", throwIfNotFound: true);
+        m_Car_DriveForwards = m_Car.FindAction("DriveForwards", throwIfNotFound: true);
+        m_Car_Turn = m_Car.FindAction("Turn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,12 +183,14 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     // Car
     private readonly InputActionMap m_Car;
     private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
-    private readonly InputAction m_Car_Drive;
+    private readonly InputAction m_Car_DriveForwards;
+    private readonly InputAction m_Car_Turn;
     public struct CarActions
     {
         private @PlayerController m_Wrapper;
         public CarActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Drive => m_Wrapper.m_Car_Drive;
+        public InputAction @DriveForwards => m_Wrapper.m_Car_DriveForwards;
+        public InputAction @Turn => m_Wrapper.m_Car_Turn;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -177,16 +200,22 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_CarActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_CarActionsCallbackInterfaces.Add(instance);
-            @Drive.started += instance.OnDrive;
-            @Drive.performed += instance.OnDrive;
-            @Drive.canceled += instance.OnDrive;
+            @DriveForwards.started += instance.OnDriveForwards;
+            @DriveForwards.performed += instance.OnDriveForwards;
+            @DriveForwards.canceled += instance.OnDriveForwards;
+            @Turn.started += instance.OnTurn;
+            @Turn.performed += instance.OnTurn;
+            @Turn.canceled += instance.OnTurn;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
         {
-            @Drive.started -= instance.OnDrive;
-            @Drive.performed -= instance.OnDrive;
-            @Drive.canceled -= instance.OnDrive;
+            @DriveForwards.started -= instance.OnDriveForwards;
+            @DriveForwards.performed -= instance.OnDriveForwards;
+            @DriveForwards.canceled -= instance.OnDriveForwards;
+            @Turn.started -= instance.OnTurn;
+            @Turn.performed -= instance.OnTurn;
+            @Turn.canceled -= instance.OnTurn;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -206,6 +235,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     public CarActions @Car => new CarActions(this);
     public interface ICarActions
     {
-        void OnDrive(InputAction.CallbackContext context);
+        void OnDriveForwards(InputAction.CallbackContext context);
+        void OnTurn(InputAction.CallbackContext context);
     }
 }
