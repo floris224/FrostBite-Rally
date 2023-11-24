@@ -41,6 +41,7 @@ public class Drive : MonoBehaviour
     }
     private void Update()
     {
+        // inputs
         moveInput = driveInputfw.ReadValue<float>();
         moveInput *= moveInput > 0 ? fwSpeed : revSpeed;
         
@@ -48,19 +49,24 @@ public class Drive : MonoBehaviour
         
         Debug.Log(turnInput);
        
-
+        //raycast that searches for the ground
         RaycastHit hit;
-        isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
+        isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, groundLayer);
 
+        //puts car right way
         transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+        
         if (isCarGrounded)
         {
+            // drag = grounddrag
             sphereRb.drag = groundDrag;
         }
         else
         {
+            // drag = air drag
             sphereRb.drag = airDrag;
         }
+        // car follows Sphere
         transform.position = sphereRb.transform.position;
     }
     public void FixedUpdate()
@@ -68,6 +74,7 @@ public class Drive : MonoBehaviour
         float newRotation = turnInput * turnSpeed * Time.deltaTime;
         if (isCarGrounded)
         {
+            // car grounded move
             Vector3 fowardForce = transform.forward * moveInput;
             sphereRb.AddForce(fowardForce, ForceMode.Impulse);
             if (moveInput != 0)
@@ -77,6 +84,7 @@ public class Drive : MonoBehaviour
         }
         else
         {
+            // gravity
             sphereRb.AddForce(transform.up * -18.8f);
         }
        
