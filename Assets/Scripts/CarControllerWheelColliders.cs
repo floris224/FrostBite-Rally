@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class CarControllerWheelColliders : MonoBehaviour
@@ -43,18 +43,20 @@ public class CarControllerWheelColliders : MonoBehaviour
         turnInput = rotationInput.ReadValue<float>();
         for (int i = 0; i < wheelColliders.Length; i++)
         {
-            wheelColliders[i].brakeTorque = 0;
+           wheelColliders[i].brakeTorque = 0;
 
             wheelColliders[i].motorTorque = moveInput * torque ;
             if (i == 3 || i == 4)
             {
                 wheelColliders[i].steerAngle = turnInput * angle;
             }
-            var pos = transform.position;
+            
+            /*var pos = transform.position;
             var rot = transform.rotation;
             wheelColliders[i].GetWorldPose(out pos, out rot);
             wheels[i].position = pos;
             wheels[i].rotation = rot;
+            */
             
         }
         
