@@ -16,7 +16,7 @@ public class CarMovement : MonoBehaviour
     public float gasInput;
     public float steeringInput;
 
-    private float speed;
+    public float speed;
     public AnimationCurve steeringCurve;
 
     private void Awake()
@@ -59,8 +59,19 @@ public class CarMovement : MonoBehaviour
     }
     void ApplyHorsePower()
     {
+
         colliders.RRWheel.motorTorque = horsePower * gasInput;
         colliders.RLWheel.motorTorque = horsePower * gasInput;
+        if ( gasInput < 0)
+        {
+            rb.drag = 1; 
+        }
+        else
+        {
+            rb.drag = .01f
+                ;
+        }
+
     }
     public void ApplySteering()
     {
