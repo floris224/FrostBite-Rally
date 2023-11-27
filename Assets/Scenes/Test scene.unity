@@ -2695,12 +2695,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349804204}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.077769384, y: -0, z: -0, w: 0.9969714}
-  m_LocalPosition: {x: 0, y: 2.21, z: -7.39}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.07776936, y: -0, z: -0, w: 0.9969714}
+  m_LocalPosition: {x: 0.033215523, y: 0.967, z: -1.625}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 228100970}
+  m_Father: {fileID: 1738668712}
   m_LocalEulerAnglesHint: {x: 8.921, y: 0, z: 0}
 --- !u!114 &349804206
 MonoBehaviour:
@@ -7642,6 +7642,12 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!23 &1493577147 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300044, guid: 115f8c155bc483040ae408006e98c07c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1590256110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1493714676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8104,6 +8110,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400028, guid: 115f8c155bc483040ae408006e98c07c,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 349804205}
+    - targetCorrespondingSourceObject: {fileID: 400028, guid: 115f8c155bc483040ae408006e98c07c,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 13685061}
     - targetCorrespondingSourceObject: {fileID: 400028, guid: 115f8c155bc483040ae408006e98c07c,
         type: 3}
@@ -8126,6 +8136,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1738668713}
+    - targetCorrespondingSourceObject: {fileID: 100028, guid: 115f8c155bc483040ae408006e98c07c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1738668716}
   m_SourcePrefab: {fileID: 100100000, guid: 115f8c155bc483040ae408006e98c07c, type: 3}
 --- !u!114 &1634546771
 MonoBehaviour:
@@ -8229,6 +8243,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1590256110}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1649146869 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300040, guid: 115f8c155bc483040ae408006e98c07c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1590256110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1653311031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8325,6 +8345,12 @@ MonoBehaviour:
   perpDirRotated: {x: -0.8654759, y: 0.000017547554, z: -0.50095063}
   markerStartUVY: 0.5483017
   customPoints: []
+--- !u!23 &1662476829 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300042, guid: 115f8c155bc483040ae408006e98c07c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1590256110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!28 &1678369837
 Texture2D:
   m_ObjectHideFlags: 0
@@ -8376,6 +8402,12 @@ Texture2D:
 --- !u!4 &1679248400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400038, guid: 115f8c155bc483040ae408006e98c07c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1590256110}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1679248401 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300038, guid: 115f8c155bc483040ae408006e98c07c,
     type: 3}
   m_PrefabInstance: {fileID: 1590256110}
   m_PrefabAsset: {fileID: 0}
@@ -8630,12 +8662,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738668707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24955df85add18247845833098732ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: -944628639613478452, guid: a01fa565b3f7c854ebc906b6d8417219, type: 3}
+  asset: {fileID: -944628639613478452, guid: 8be95a82420728f4daa69b1f9f144026, type: 3}
   driveInputfw:
     m_Name: Drive Inputfw
     m_Type: 0
@@ -8675,8 +8707,8 @@ Rigidbody:
   m_GameObject: {fileID: 1738668707}
   serializedVersion: 4
   m_Mass: 1500
-  m_Drag: 0.04
-  m_AngularDrag: 0.05
+  m_Drag: 0.01
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -8720,6 +8752,74 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.288311, y: 0.5399887, z: 1.4462075}
   m_Center: {x: -0.040351868, y: 0.31224963, z: 2.9974273e-16}
+--- !u!114 &1738668716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738668707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef351a87ef295604695d1b48e92150ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders:
+    fRWheel: {fileID: 1749833505}
+    fLWheel: {fileID: 1868929482}
+    RRWheel: {fileID: 1015510325}
+    RLWheel: {fileID: 352523293}
+  wheelMesh:
+    fRWheel: {fileID: 1493577147}
+    fLWheel: {fileID: 1662476829}
+    RRWheel: {fileID: 1649146869}
+    RLWheel: {fileID: 1679248401}
+  asset: {fileID: -944628639613478452, guid: a01fa565b3f7c854ebc906b6d8417219, type: 3}
+  driveInputfw:
+    m_Name: Drive Inputfw
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 495aed26-6624-4b7b-b1fc-03dffb8efe24
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rotationInput:
+    m_Name: Rotation Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3eca59f7-02b0-4a4d-99c8-415e6f401672
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  horsePower: 5000
+  gasInput: 0
+  steeringInput: 0
+  steeringCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.08614087
+      value: 60.088203
+      inSlope: 0.07655105
+      outSlope: 0.07655105
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09575434
+    - serializedVersion: 3
+      time: 78.87379
+      value: 2.1906433
+      inSlope: -0.9643758
+      outSlope: -0.9643758
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09608369
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1749833503
 GameObject:
   m_ObjectHideFlags: 0
@@ -29391,10 +29491,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1132453449}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: fb429aa860abc764c9de67f2d4bed540,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 349804205}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fb429aa860abc764c9de67f2d4bed540,
         type: 3}

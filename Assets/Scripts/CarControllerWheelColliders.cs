@@ -36,7 +36,7 @@ public class CarControllerWheelColliders : MonoBehaviour
    
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         moveInput = driveInputfw.ReadValue<float>();
 
@@ -46,17 +46,17 @@ public class CarControllerWheelColliders : MonoBehaviour
            wheelColliders[i].brakeTorque = 0;
 
             wheelColliders[i].motorTorque = moveInput * torque ;
-            if (i == 3 || i == 4)
+            if (i == 0 || i == 2)
             {
                 wheelColliders[i].steerAngle = turnInput * angle;
             }
             
-            /*var pos = transform.position;
+            var pos = transform.position;
             var rot = transform.rotation;
             wheelColliders[i].GetWorldPose(out pos, out rot);
             wheels[i].position = pos;
             wheels[i].rotation = rot;
-            */
+            
             
         }
         
