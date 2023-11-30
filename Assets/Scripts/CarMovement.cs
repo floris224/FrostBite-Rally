@@ -15,7 +15,7 @@ public class CarMovement : MonoBehaviour
     public float horsePower;
     public float gasInput;
     public float steeringInput;
-
+    public float maxSteeringAngle;
     public float speed;
     public AnimationCurve steeringCurve;
 
@@ -49,7 +49,7 @@ public class CarMovement : MonoBehaviour
         gasInput = driveInputfw.ReadValue<float>();
         steeringInput = rotationInput.ReadValue<float>();
     }
-    void Update()
+    void FixedUpdate()
     {
         speed = rb.velocity.magnitude;
         checkInput();
@@ -62,22 +62,31 @@ public class CarMovement : MonoBehaviour
 
         colliders.RRWheel.motorTorque = horsePower * gasInput;
         colliders.RLWheel.motorTorque = horsePower * gasInput;
+        colliders.fRWheel.motorTorque = horsePower * gasInput;
+        colliders.fLWheel.motorTorque = horsePower * gasInput;
         if ( gasInput < 0)
         {
             rb.drag = 1; 
         }
         else
         {
-            rb.drag = .01f
-                ;
+            rb.drag = .01f;
+               
         }
 
     }
     public void ApplySteering()
     {
+        
         float steeringAngle = steeringInput * steeringCurve.Evaluate(speed);
         colliders.fRWheel.steerAngle = steeringAngle;
         colliders.fLWheel.steerAngle = steeringAngle;
+        
+        /*
+        float steeringAngle = maxSteeringAngle - steeringInput;
+        colliders.fLWheel.steerAngle = steeringAngle;
+        colliders.fLWheel.steerAngle = steeringAngle;
+        */
     }
     void ApplyUpdateWheels()
     {

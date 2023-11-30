@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SamplesInfoPanel
   - Deur
+  - PlayerHand
   layers:
   - Default
   - TransparentFX
