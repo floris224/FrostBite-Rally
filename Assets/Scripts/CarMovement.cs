@@ -15,8 +15,11 @@ public class CarMovement : MonoBehaviour
     public float horsePower;
     public float gasInput;
     public float steeringInput;
-    public float maxSteeringAngle;
+   
+    public float brakeTorgue;
+    public float brakeInput;
     public float speed;
+    public float angle;
     public AnimationCurve steeringCurve;
 
     private void Awake()
@@ -48,14 +51,20 @@ public class CarMovement : MonoBehaviour
     {
         gasInput = driveInputfw.ReadValue<float>();
         steeringInput = rotationInput.ReadValue<float>();
+        if (gasInput < 0)
+        {
+            brakeInput = gasInput;
+            gasInput = 0;
+        }
     }
-    void FixedUpdate()
+    void Update()
     {
         speed = rb.velocity.magnitude;
         checkInput();
         ApplyUpdateWheels();
         ApplyHorsePower();
         ApplySteering();
+        //ApplyBrakes();
     }
     void ApplyHorsePower()
     {
@@ -66,11 +75,11 @@ public class CarMovement : MonoBehaviour
         colliders.fLWheel.motorTorque = horsePower * gasInput;
         if ( gasInput < 0)
         {
-            rb.drag = 1; 
+            ApplyBrakes();
         }
         else
         {
-            rb.drag = .01f;
+            
                
         }
 
@@ -87,6 +96,14 @@ public class CarMovement : MonoBehaviour
         colliders.fLWheel.steerAngle = steeringAngle;
         colliders.fLWheel.steerAngle = steeringAngle;
         */
+    }
+    void ApplyBrakes()
+    {
+        
+        colliders.fLWheel.brakeTorque = brakeTorgue * brakeInput * 0.8f;
+        colliders.fRWheel.brakeTorque = brakeTorgue * brakeInput * 0.8f;
+        colliders.RRWheel.brakeTorque = brakeTorgue * brakeInput * 0.2f;
+        colliders.RLWheel.brakeTorque = brakeTorgue * brakeInput * 0.2f;
     }
     void ApplyUpdateWheels()
     {

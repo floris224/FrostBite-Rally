@@ -106,7 +106,7 @@ namespace Oculus.Interaction
             {
                 if (IsVisible || ForceOffVisibility)
                 {
-                    _skinnedMeshRenderer.enabled = false;
+                    //_skinnedMeshRenderer.enabled = false; // Disabled to facilitate PlayerConfiguration.cs
                 }
                 WhenHandVisualUpdated.Invoke();
                 return;
@@ -114,11 +114,11 @@ namespace Oculus.Interaction
 
             if (!IsVisible && !ForceOffVisibility)
             {
-                _skinnedMeshRenderer.enabled = true;
+                //_skinnedMeshRenderer.enabled = true; // Disabled to facilitate PlayerConfiguration.cs
             }
             else if(IsVisible && ForceOffVisibility)
             {
-                _skinnedMeshRenderer.enabled = false;
+                //_skinnedMeshRenderer.enabled = false; // Disabled to facilitate PlayerConfiguration.cs
             }
 
             if (_updateRootPose)
