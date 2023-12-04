@@ -19,7 +19,8 @@ public class CarMovement : MonoBehaviour
     public float brakeTorgue;
     public float brakeInput;
     public float speed;
-    public float angle;
+    public float driftAngle;
+    
     public AnimationCurve steeringCurve;
 
     private void Awake()
@@ -51,38 +52,42 @@ public class CarMovement : MonoBehaviour
     {
         gasInput = driveInputfw.ReadValue<float>();
         steeringInput = rotationInput.ReadValue<float>();
-        if (gasInput < 0)
+        driftAngle = Vector3.Angle(transform.forward, rb.velocity);
+        if (driftAngle < 120)
         {
-            brakeInput = gasInput;
-            gasInput = 0;
+            if (gasInput < 0)
+            {
+                brakeInput = Mathf.Abs(gasInput);
+                gasInput = 0;
+
+            }
+            else
+            {
+                brakeInput = 0;
+            }
         }
+        else
+        {
+            brakeInput = 0;
+        }
+        
+         
     }
-    void Update()
+    void FixedUpdate()
     {
         speed = rb.velocity.magnitude;
         checkInput();
         ApplyUpdateWheels();
         ApplyHorsePower();
         ApplySteering();
-        //ApplyBrakes();
+        ApplyBrakes();
     }
     void ApplyHorsePower()
     {
-
-        colliders.RRWheel.motorTorque = horsePower * gasInput;
-        colliders.RLWheel.motorTorque = horsePower * gasInput;
-        colliders.fRWheel.motorTorque = horsePower * gasInput;
-        colliders.fLWheel.motorTorque = horsePower * gasInput;
-        if ( gasInput < 0)
-        {
-            ApplyBrakes();
-        }
-        else
-        {
-            
-               
-        }
-
+            colliders.RRWheel.motorTorque = horsePower * gasInput;
+            colliders.RLWheel.motorTorque = horsePower * gasInput;
+            colliders.fRWheel.motorTorque = horsePower * gasInput;
+            colliders.fLWheel.motorTorque = horsePower * gasInput;
     }
     public void ApplySteering()
     {
@@ -91,19 +96,16 @@ public class CarMovement : MonoBehaviour
         colliders.fRWheel.steerAngle = steeringAngle;
         colliders.fLWheel.steerAngle = steeringAngle;
         
-        /*
-        float steeringAngle = maxSteeringAngle - steeringInput;
-        colliders.fLWheel.steerAngle = steeringAngle;
-        colliders.fLWheel.steerAngle = steeringAngle;
-        */
+       
     }
     void ApplyBrakes()
     {
         
-        colliders.fLWheel.brakeTorque = brakeTorgue * brakeInput * 0.8f;
-        colliders.fRWheel.brakeTorque = brakeTorgue * brakeInput * 0.8f;
-        colliders.RRWheel.brakeTorque = brakeTorgue * brakeInput * 0.2f;
-        colliders.RLWheel.brakeTorque = brakeTorgue * brakeInput * 0.2f;
+        colliders.fLWheel.brakeTorque = brakeTorgue * brakeInput * 0.9f;
+        colliders.fRWheel.brakeTorque = brakeTorgue * brakeInput * 0.9f;
+        colliders.RRWheel.brakeTorque = brakeTorgue * brakeInput * 0.1f;
+        colliders.RLWheel.brakeTorque = brakeTorgue * brakeInput * 0.1f;
+       
     }
     void ApplyUpdateWheels()
     {
