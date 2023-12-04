@@ -7,11 +7,11 @@ public class SteeringWheelController : MonoBehaviour
     // right Hand
     public GameObject rightHand;
     public Transform rightHandOriginalParent;
-    private bool rightHandOnWheel;
+    public bool rightHandOnWheel;
     //left hand
     public GameObject leftHand;
     public Transform leftHandOriginalParent;
-    private bool leftHandOnWheel;
+    public bool leftHandOnWheel;
 
     public Transform[] snapPositions;
 
@@ -39,17 +39,19 @@ public class SteeringWheelController : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        
         if (other.CompareTag("PlayerHand"))
         {
-            if(rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+            Debug.LogError("In");
+            if (rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
             {
-                
+                testRight.SetActive(false);
                 PlaceHandOnWheel(ref rightHand, ref rightHandOriginalParent, ref rightHandOnWheel);
             }
 
             if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
             {
-               
+                testLeft.SetActive(false);
                 PlaceHandOnWheel(ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel);
             }
         }
@@ -64,8 +66,8 @@ public class SteeringWheelController : MonoBehaviour
         {
             if(snappPosition.childCount == 0)
             {
-                testRight.SetActive(false);
-                testLeft.SetActive(false);
+                
+                
                 var distance = Vector3.Distance(snappPosition.position, hand.transform.position);
                 if(distance < shortestDistance)
                 {
