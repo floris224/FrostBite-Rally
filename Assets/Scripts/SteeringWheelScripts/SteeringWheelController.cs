@@ -6,11 +6,11 @@ public class SteeringWheelController : MonoBehaviour
 {
     // right Hand
     public GameObject rightHand;
-    public Transform rightHandOriginalParent;
+    private Transform rightHandOriginalParent;
     public bool rightHandOnWheel;
     //left hand
     public GameObject leftHand;
-    public Transform leftHandOriginalParent;
+    private Transform leftHandOriginalParent;
     public bool leftHandOnWheel;
 
     public Transform[] snapPositions;
