@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -5,16 +6,17 @@ using UnityEngine;
 
 public class SteeringWheelController : MonoBehaviour
 {
-    
+   // public CarMovement carMovement;
     // right Hand
     public GameObject rightHand;
-    private Transform rightHandOriginalParent;
+    public Transform rightHandOriginalParent;
     public bool rightHandOnWheel;
     //left hand
     public GameObject leftHand;
-    private Transform leftHandOriginalParent;
+    public Transform leftHandOriginalParent;
     public bool leftHandOnWheel;
 
+   // public GameObject steeringWheel;
     public Transform[] snapPositions;
 
     public GameObject car;
@@ -39,7 +41,7 @@ public class SteeringWheelController : MonoBehaviour
     void Update()
     {
         ReleaseHand();
-        //TurnVehicle();
+        
         ConvertHandRotationToSteeringWheel();
     }
     private void OnTriggerStay(Collider other)
@@ -88,11 +90,7 @@ public class SteeringWheelController : MonoBehaviour
         handOnWheel = true;
         numberOfHandsOnWheel++;
     }
-    void TurnVehicle()
-    {
-        
-        
-    }
+   
     private void ConvertHandRotationToSteeringWheel()
     {
         /*
@@ -125,7 +123,7 @@ public class SteeringWheelController : MonoBehaviour
         {
             rightHand.transform.parent = rightHandOriginalParent;
             rightHand.transform.position = rightHandOriginalParent.transform.position;
-            rightHand.transform.rotation = rightHandOriginalParent.transform.rotation;
+            
             rightHandOnWheel = false;
             numberOfHandsOnWheel--;
         }
@@ -133,13 +131,10 @@ public class SteeringWheelController : MonoBehaviour
         {
             leftHand.transform.parent = leftHandOriginalParent;
             leftHand.transform.position = leftHandOriginalParent.transform.position;
-            leftHand.transform.rotation = leftHandOriginalParent.transform.rotation;
+           
             leftHandOnWheel = false;
             numberOfHandsOnWheel--;
         }
-        if (rightHandOnWheel == false && rightHandOnWheel == false)
-        {
-            transform.parent = null;
-        }
+      
     }
 }

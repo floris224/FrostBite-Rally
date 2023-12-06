@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class CarMovement : MonoBehaviour
 {
+
+    public GameObject steeringWheel;
+
+
     private Rigidbody rb;
     public WheelColliders colliders;
     public WheelMeshs wheelMesh;
@@ -91,13 +95,25 @@ public class CarMovement : MonoBehaviour
     }
     public void ApplySteering()
     {
+             
+        float steeringWheelRotation = steeringWheel.transform.rotation.eulerAngles.z;
         
-        float steeringAngle = steeringInput * steeringCurve.Evaluate(speed);
-        colliders.fRWheel.steerAngle = steeringAngle;
-        colliders.fLWheel.steerAngle = steeringAngle;
+         if (steeringWheelRotation > 180)
+         {
+                steeringWheelRotation -= 360;
+         }
+
+            float normalizedSteeringInput = steeringWheelRotation / 90f;
+            steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
+            steeringWheelRotation = Mathf.Clamp(steeringWheelRotation, -90f, 90f);
+
+            float steeringAngle = steeringInput * steeringCurve.Evaluate(speed);
+            colliders.fRWheel.steerAngle = -steeringAngle;
+            colliders.fLWheel.steerAngle = -steeringAngle;
         
        
     }
+
     void ApplyBrakes()
     {
         
