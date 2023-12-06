@@ -42,21 +42,21 @@ public class SteeringWheelController : MonoBehaviour
     {
         ReleaseHand();
         
-        ConvertHandRotationToSteeringWheel();
+        
     }
     private void OnTriggerStay(Collider other)
     {
         
         if (other.CompareTag("PlayerHand"))
         {
-            Debug.LogError("In");
+            
             if (rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
             {
                 testRight.SetActive(false);
                 PlaceHandOnWheel(ref rightHand, ref rightHandOriginalParent, ref rightHandOnWheel);
             }
 
-            if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+            if(leftHandOnWheel == false/* && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch)*/)
             {
                 testLeft.SetActive(false);
                 PlaceHandOnWheel(ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel);
@@ -68,8 +68,8 @@ public class SteeringWheelController : MonoBehaviour
     {
         var shortestDistance = Vector3.Distance(snapPositions[0].position, hand.transform.position);
         var bestSnap = snapPositions[0];
-
-        foreach(var snappPosition in snapPositions)
+        Debug.LogError("In Pos");
+        foreach (var snappPosition in snapPositions)
         {
             if(snappPosition.childCount == 0)
             {
@@ -91,32 +91,7 @@ public class SteeringWheelController : MonoBehaviour
         numberOfHandsOnWheel++;
     }
    
-    private void ConvertHandRotationToSteeringWheel()
-    {
-        /*
-        if(rightHandOnWheel == true && leftHandOnWheel == false)
-        {
-            Quaternion newRot = Quaternion.Euler(0, 0, rightHandOriginalParent.transform.rotation.eulerAngles.z);
-            directionalObject.rotation = newRot;
-            transform.parent = directionalObject;
-        }
-        else if(rightHandOnWheel == false && leftHandOnWheel == true)
-        {
-            Quaternion newRot = Quaternion.Euler(0, 0, leftHandOriginalParent.transform.rotation.eulerAngles.z);
-            directionalObject.rotation = newRot;
-            transform.parent = directionalObject;
-        }
-        else if(rightHandOnWheel == true && leftHandOnWheel == true)
-        {
-            Quaternion newRotLeft = Quaternion.Euler(0, 0,leftHandOriginalParent.transform.rotation.eulerAngles.z);
-            Quaternion newRotRight = Quaternion.Euler(0, 0, rightHandOriginalParent.transform.rotation.eulerAngles.z);
-            Quaternion finalRot = Quaternion.Slerp(newRotLeft, newRotRight, 1.0f / 2.0f);
-            directionalObject.rotation = finalRot;
-            transform.parent = directionalObject;
-        }
-        */
-    }
-    
+  
     private void ReleaseHand()
     {
         if(rightHandOnWheel == true && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))

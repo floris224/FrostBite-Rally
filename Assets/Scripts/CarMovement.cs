@@ -24,7 +24,7 @@ public class CarMovement : MonoBehaviour
     public float brakeInput;
     public float speed;
     public float driftAngle;
-    
+    public float maxRotation;
     public AnimationCurve steeringCurve;
 
     private void Awake()
@@ -105,7 +105,7 @@ public class CarMovement : MonoBehaviour
 
             float normalizedSteeringInput = steeringWheelRotation / 90f;
             steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
-            steeringWheelRotation = Mathf.Clamp(steeringWheelRotation, -90f, 90f);
+            maxRotation = Mathf.Clamp(steeringWheelRotation, -90f, 90f);
 
             float steeringAngle = steeringInput * steeringCurve.Evaluate(speed);
             colliders.fRWheel.steerAngle = -steeringAngle;

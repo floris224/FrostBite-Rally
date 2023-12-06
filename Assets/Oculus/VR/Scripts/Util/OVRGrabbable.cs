@@ -67,6 +67,7 @@ public class OVRGrabbable : MonoBehaviour
     /// </summary>
     public bool snapPosition
     {
+
         get { return m_snapPosition; }
     }
 
