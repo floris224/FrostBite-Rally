@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SteeringWheelController : MonoBehaviour
 {
+    
     // right Hand
     public GameObject rightHand;
     private Transform rightHandOriginalParent;
@@ -30,12 +32,15 @@ public class SteeringWheelController : MonoBehaviour
     void Start()
     {
         carRB = car.GetComponent<Rigidbody>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ReleaseHand();
+        //TurnVehicle();
+        ConvertHandRotationToSteeringWheel();
     }
     private void OnTriggerStay(Collider other)
     {
@@ -83,10 +88,58 @@ public class SteeringWheelController : MonoBehaviour
         handOnWheel = true;
         numberOfHandsOnWheel++;
     }
-
+    void TurnVehicle()
+    {
+        
+        
+    }
     private void ConvertHandRotationToSteeringWheel()
     {
-
+        /*
+        if(rightHandOnWheel == true && leftHandOnWheel == false)
+        {
+            Quaternion newRot = Quaternion.Euler(0, 0, rightHandOriginalParent.transform.rotation.eulerAngles.z);
+            directionalObject.rotation = newRot;
+            transform.parent = directionalObject;
+        }
+        else if(rightHandOnWheel == false && leftHandOnWheel == true)
+        {
+            Quaternion newRot = Quaternion.Euler(0, 0, leftHandOriginalParent.transform.rotation.eulerAngles.z);
+            directionalObject.rotation = newRot;
+            transform.parent = directionalObject;
+        }
+        else if(rightHandOnWheel == true && leftHandOnWheel == true)
+        {
+            Quaternion newRotLeft = Quaternion.Euler(0, 0,leftHandOriginalParent.transform.rotation.eulerAngles.z);
+            Quaternion newRotRight = Quaternion.Euler(0, 0, rightHandOriginalParent.transform.rotation.eulerAngles.z);
+            Quaternion finalRot = Quaternion.Slerp(newRotLeft, newRotRight, 1.0f / 2.0f);
+            directionalObject.rotation = finalRot;
+            transform.parent = directionalObject;
+        }
+        */
     }
     
+    private void ReleaseHand()
+    {
+        if(rightHandOnWheel == true && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+        {
+            rightHand.transform.parent = rightHandOriginalParent;
+            rightHand.transform.position = rightHandOriginalParent.transform.position;
+            rightHand.transform.rotation = rightHandOriginalParent.transform.rotation;
+            rightHandOnWheel = false;
+            numberOfHandsOnWheel--;
+        }
+        else if (leftHandOnWheel == true && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+        {
+            leftHand.transform.parent = leftHandOriginalParent;
+            leftHand.transform.position = leftHandOriginalParent.transform.position;
+            leftHand.transform.rotation = leftHandOriginalParent.transform.rotation;
+            leftHandOnWheel = false;
+            numberOfHandsOnWheel--;
+        }
+        if (rightHandOnWheel == false && rightHandOnWheel == false)
+        {
+            transform.parent = null;
+        }
+    }
 }
