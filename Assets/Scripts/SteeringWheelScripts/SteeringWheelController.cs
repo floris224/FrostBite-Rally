@@ -28,6 +28,11 @@ public class SteeringWheelController : MonoBehaviour
     public GameObject testRight;
     public GameObject testLeft;
 
+    public GameObject fakeHandsR;
+    public GameObject fakeHandsL;
+
+    public GameObject realHandsR;
+    public GameObject realHandsL;
     private float turnDampening = 250;
     public Transform directionalObject;
     // Start is called before the first frame update
@@ -66,9 +71,10 @@ public class SteeringWheelController : MonoBehaviour
 
     private void PlaceHandOnWheel(ref GameObject hand, ref Transform originalParent,ref bool handOnWheel)
     {
+        /*
         var shortestDistance = Vector3.Distance(snapPositions[0].position, hand.transform.position);
         var bestSnap = snapPositions[0];
-        Debug.LogError("In Pos");
+        
         foreach (var snappPosition in snapPositions)
         {
             if(snappPosition.childCount == 0)
@@ -86,7 +92,17 @@ public class SteeringWheelController : MonoBehaviour
         originalParent = hand.transform;
         hand.transform.parent = bestSnap.transform;
         hand.transform.position = bestSnap.transform.position;
-
+        */
+        if (leftHandOnWheel)
+        {
+            fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        }
+        if (rightHandOnWheel)
+        {
+            fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        }
         handOnWheel = true;
         numberOfHandsOnWheel++;
     }
@@ -98,7 +114,8 @@ public class SteeringWheelController : MonoBehaviour
         {
             rightHand.transform.parent = rightHandOriginalParent;
             rightHand.transform.position = rightHandOriginalParent.transform.position;
-            
+            fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
             rightHandOnWheel = false;
             numberOfHandsOnWheel--;
         }
@@ -106,7 +123,10 @@ public class SteeringWheelController : MonoBehaviour
         {
             leftHand.transform.parent = leftHandOriginalParent;
             leftHand.transform.position = leftHandOriginalParent.transform.position;
-           
+
+            fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
+
             leftHandOnWheel = false;
             numberOfHandsOnWheel--;
         }

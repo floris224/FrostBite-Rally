@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class CarMovement : MonoBehaviour
@@ -103,9 +104,10 @@ public class CarMovement : MonoBehaviour
                 steeringWheelRotation -= 360;
          }
 
+
             float normalizedSteeringInput = steeringWheelRotation / 90f;
             steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
-            maxRotation = Mathf.Clamp(steeringWheelRotation, -90f, 90f);
+          
 
             float steeringAngle = steeringInput * steeringCurve.Evaluate(speed);
             colliders.fRWheel.steerAngle = -steeringAngle;
@@ -135,6 +137,9 @@ public class CarMovement : MonoBehaviour
         Quaternion quaternion;
         Vector3 position;
         collider.GetWorldPose(out position, out quaternion);
+        Vector3 eulerRotation= quaternion.eulerAngles;
+        eulerRotation.y = Mathf.Clamp(eulerRotation.y, -310, 45);
+        quaternion = Quaternion.Euler(eulerRotation);
         wheelMesh.transform.position = position;
         wheelMesh.transform.rotation = quaternion;
     }
