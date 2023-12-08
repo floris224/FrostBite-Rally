@@ -128,7 +128,7 @@ public class CarMovement : MonoBehaviour
     public void ApplySteering()
     {
              
-        float steeringWheelRotation = steeringWheel.transform.localRotation.eulerAngles.z;
+        float steeringWheelRotation = steeringWheel.transform.rotation.eulerAngles.z;
         
         /*
          if (steeringWheelRotation > 180)
@@ -138,8 +138,9 @@ public class CarMovement : MonoBehaviour
         */
 
 
-            float normalizedSteeringInput = steeringWheelRotation / 90f;
+            float normalizedSteeringInput = steeringWheelRotation / 90;
             steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
+            //Mathf.Clamp(steeringWheel.transform.rotation.z, -90, 45);
           
 
             float steeringAngle = steeringInput * steeringCurve.Evaluate(speed)/ 3;
@@ -174,7 +175,7 @@ public class CarMovement : MonoBehaviour
         wheelMesh.transform.position = position;
         wheelMesh.transform.rotation = quaternion;
 
-        //Mathf.Clamp(quaternion.y, 315, 45);
+      
     }
 
 }

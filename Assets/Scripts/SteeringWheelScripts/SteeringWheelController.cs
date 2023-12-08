@@ -15,6 +15,7 @@ public class SteeringWheelController : MonoBehaviour
     public GameObject leftHand;
     public Transform leftHandOriginalParent;
     public bool leftHandOnWheel;
+    public Transform steeringWheel;
 
    // public GameObject steeringWheel;
     public Transform[] snapPositions;
@@ -100,10 +101,12 @@ public class SteeringWheelController : MonoBehaviour
         hand.transform.parent = bestSnap.transform;
         hand.transform.position = bestSnap.transform.position;
         */
+        steeringWheel.rotation = Quaternion.identity;
         rightHandOnWheel = true;
         leftHandOnWheel = true;
         if (leftHandOnWheel)
         {
+            
             fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
             realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
             player.transform.parent = car.transform;
