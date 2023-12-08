@@ -7,6 +7,7 @@ public class SteeringInput : MonoBehaviour
 {
     public Transform handL;
     public SteeringWheelController inputGiver;
+    public GameObject car;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,21 +15,29 @@ public class SteeringInput : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if(inputGiver.numberOfHandsOnWheel > 0)
+        //gameObject.transform.localRotation = car.transform.localRotation;
+        InputSteering();
+        /*if (inputGiver.numberOfHandsOnWheel > 0)
         {
             InputSteering();
         
         }
+        */
        
     }
     private void InputSteering()
     {
-        Quaternion handRotation = handL.rotation;
+        Quaternion handRotation = handL.localRotation;
 
         float newZRot = handRotation.eulerAngles.z;
-        transform.rotation = Quaternion.Euler(0,0,newZRot);
-       
+        
+        //clamp werked niet 
+        //Mathf.Clamp(handRotation.eulerAngles.z, 315, 45);
+        transform.localRotation = Quaternion.Euler(0,car.transform.rotation.y,- newZRot);
+        
     }
+
+    
 }

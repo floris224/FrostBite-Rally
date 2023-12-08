@@ -25,8 +25,7 @@ public class SteeringWheelController : MonoBehaviour
     public float currentSteeringWheelRotation;
     public float numberOfHandsOnWheel = 0;
 
-    public GameObject testRight;
-    public GameObject testLeft;
+   
 
     public GameObject fakeHandsR;
     public GameObject fakeHandsL;
@@ -34,20 +33,28 @@ public class SteeringWheelController : MonoBehaviour
     public GameObject realHandsR;
     public GameObject realHandsL;
     private float turnDampening = 250;
-    public Transform directionalObject;
+    
+
+
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         carRB = car.GetComponent<Rigidbody>();
-       
+        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         ReleaseHand();
         
         
+    }
+
+    private void LateUpdate()
+    {
+       
     }
     private void OnTriggerStay(Collider other)
     {
@@ -57,19 +64,19 @@ public class SteeringWheelController : MonoBehaviour
             
             if (rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
             {
-                testRight.SetActive(false);
-                PlaceHandOnWheel(ref rightHand, ref rightHandOriginalParent, ref rightHandOnWheel);
+               
+                PlaceHandOnWheel(/*ref rightHand, ref rightHandOriginalParent, ref rightHandOnWheel*/);
             }
 
-            if(leftHandOnWheel == false/* && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch)*/)
+            if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
             {
-                testLeft.SetActive(false);
-                PlaceHandOnWheel(ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel);
+               
+                PlaceHandOnWheel(/*ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel*/);
             }
         }
     }
 
-    private void PlaceHandOnWheel(ref GameObject hand, ref Transform originalParent,ref bool handOnWheel)
+    private void PlaceHandOnWheel(/*ref GameObject hand, ref Transform originalParent,ref bool handOnWheel*/)
     {
         /*
         var shortestDistance = Vector3.Distance(snapPositions[0].position, hand.transform.position);
@@ -93,17 +100,31 @@ public class SteeringWheelController : MonoBehaviour
         hand.transform.parent = bestSnap.transform;
         hand.transform.position = bestSnap.transform.position;
         */
+        rightHandOnWheel = true;
+        leftHandOnWheel = true;
         if (leftHandOnWheel)
         {
             fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
             realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            player.transform.parent = car.transform;
+
+            fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
+
+
         }
         if (rightHandOnWheel)
         {
+            fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            player.transform.parent = car.transform;
+
             fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
             realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
+
+
         }
-        handOnWheel = true;
+        //handOnWheel = true;
         numberOfHandsOnWheel++;
     }
    
@@ -115,7 +136,7 @@ public class SteeringWheelController : MonoBehaviour
             rightHand.transform.parent = rightHandOriginalParent;
             rightHand.transform.position = rightHandOriginalParent.transform.position;
             fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
-            realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
             rightHandOnWheel = false;
             numberOfHandsOnWheel--;
         }

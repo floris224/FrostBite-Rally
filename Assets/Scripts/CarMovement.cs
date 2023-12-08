@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -16,10 +17,12 @@ public class CarMovement : MonoBehaviour
     public InputActionAsset asset;
     public InputAction driveInputfw;
     public InputAction rotationInput;
+    public InputAction gasInputs;
 
     public float horsePower;
     public float gasInput;
     public float steeringInput;
+    public float gasinputVR;
    
     public float brakeTorgue;
     public float brakeInput;
@@ -28,22 +31,25 @@ public class CarMovement : MonoBehaviour
     public float maxRotation;
     public AnimationCurve steeringCurve;
 
+    public SteeringWheelController controller;
     private void Awake()
     {
 
         driveInputfw = asset.FindAction("DriveForwards");
         rotationInput = asset.FindAction("Turn");
-
+       
     }
     private void OnEnable()
     {
         driveInputfw.Enable();
         rotationInput.Enable();
+      
     }
     private void OnDisable()
     {
         driveInputfw.Disable();
         rotationInput.Disable();
+        
     }
 
     // Start is called before the first frame update
@@ -56,7 +62,9 @@ public class CarMovement : MonoBehaviour
     void checkInput()
     {
         gasInput = driveInputfw.ReadValue<float>();
+        
         steeringInput = rotationInput.ReadValue<float>();
+
         driftAngle = Vector3.Angle(transform.forward, rb.velocity);
         if (driftAngle < 120)
         {
@@ -82,10 +90,33 @@ public class CarMovement : MonoBehaviour
     {
         speed = rb.velocity.magnitude;
         checkInput();
+        if (controller.numberOfHandsOnWheel > 0 &&  OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+        {
+            
+            gasInput = 1;
+            
+            ApplyHorsePower();
+        }
+        else
+        {
+            gasInput = 0;
+        }
+
+        if (controller.numberOfHandsOnWheel > 0 && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger, OVRInput.Controller.LTouch))
+        {
+            brakeInput = MathF.Abs(gasInput);
+            gasInput = 0;
+            ApplyBrakes();
+        }
+        else
+        {
+            brakeInput = 0;
+        }
+        
         ApplyUpdateWheels();
-        ApplyHorsePower();
+       
         ApplySteering();
-        ApplyBrakes();
+        
     }
     void ApplyHorsePower()
     {
@@ -97,19 +128,21 @@ public class CarMovement : MonoBehaviour
     public void ApplySteering()
     {
              
-        float steeringWheelRotation = steeringWheel.transform.rotation.eulerAngles.z;
+        float steeringWheelRotation = steeringWheel.transform.localRotation.eulerAngles.z;
         
+        /*
          if (steeringWheelRotation > 180)
          {
                 steeringWheelRotation -= 360;
          }
+        */
 
 
             float normalizedSteeringInput = steeringWheelRotation / 90f;
             steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
           
 
-            float steeringAngle = steeringInput * steeringCurve.Evaluate(speed);
+            float steeringAngle = steeringInput * steeringCurve.Evaluate(speed)/ 3;
             colliders.fRWheel.steerAngle = -steeringAngle;
             colliders.fLWheel.steerAngle = -steeringAngle;
         
@@ -137,11 +170,11 @@ public class CarMovement : MonoBehaviour
         Quaternion quaternion;
         Vector3 position;
         collider.GetWorldPose(out position, out quaternion);
-        Vector3 eulerRotation= quaternion.eulerAngles;
-        eulerRotation.y = Mathf.Clamp(eulerRotation.y, -310, 45);
-        quaternion = Quaternion.Euler(eulerRotation);
+       
         wheelMesh.transform.position = position;
         wheelMesh.transform.rotation = quaternion;
+
+        //Mathf.Clamp(quaternion.y, 315, 45);
     }
 
 }

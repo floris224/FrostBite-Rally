@@ -44,6 +44,15 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0e72d28-8df9-4ee7-bc6d-1741b4d0b2bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4bfa146-3983-4b55-a4fa-cb71dcb3c59a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_DriveForwards = m_Car.FindAction("DriveForwards", throwIfNotFound: true);
         m_Car_Turn = m_Car.FindAction("Turn", throwIfNotFound: true);
+        m_Car_Newaction = m_Car.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,12 +206,14 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
     private readonly InputAction m_Car_DriveForwards;
     private readonly InputAction m_Car_Turn;
+    private readonly InputAction m_Car_Newaction;
     public struct CarActions
     {
         private @PlayerController m_Wrapper;
         public CarActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         public InputAction @DriveForwards => m_Wrapper.m_Car_DriveForwards;
         public InputAction @Turn => m_Wrapper.m_Car_Turn;
+        public InputAction @Newaction => m_Wrapper.m_Car_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -206,6 +229,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Turn.started += instance.OnTurn;
             @Turn.performed += instance.OnTurn;
             @Turn.canceled += instance.OnTurn;
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
@@ -216,6 +242,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Turn.started -= instance.OnTurn;
             @Turn.performed -= instance.OnTurn;
             @Turn.canceled -= instance.OnTurn;
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -237,5 +266,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     {
         void OnDriveForwards(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
