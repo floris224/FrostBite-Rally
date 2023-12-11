@@ -127,27 +127,30 @@ public class CarMovement : MonoBehaviour
     }
     public void ApplySteering()
     {
-             
-        float steeringWheelRotation = steeringWheel.transform.rotation.eulerAngles.z;
-        
-        /*
-         if (steeringWheelRotation > 180)
-         {
-                steeringWheelRotation -= 360;
-         }
-        */
+
+        float steeringWheelRotation = steeringWheel.transform.localEulerAngles.z;
+        steeringWheelRotation = (steeringWheelRotation + 360) % 360;
+
+        float normalizedSteeringInput = (steeringWheelRotation > 180) ?
+            Mathf.InverseLerp(180, 360, steeringWheelRotation) * 2 - 1 : Mathf.InverseLerp(0, 180, steeringWheelRotation) * 2;
+            
+        steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
 
 
-            float normalizedSteeringInput = steeringWheelRotation / 90;
-            steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
-            //Mathf.Clamp(steeringWheel.transform.rotation.z, -90, 45);
-          
 
-            float steeringAngle = steeringInput * steeringCurve.Evaluate(speed)/ 3;
-            colliders.fRWheel.steerAngle = -steeringAngle;
-            colliders.fLWheel.steerAngle = -steeringAngle;
-        
-       
+        float steeringAngle = steeringInput * steeringCurve.Evaluate(speed) / 3;
+        colliders.fRWheel.steerAngle = -steeringAngle;
+        colliders.fLWheel.steerAngle = -steeringAngle;
+
+
+
+
+
+        Debug.Log("Steering Wheel Rotation: " + steeringWheelRotation);
+        Debug.Log("Normalized Steering Input: " + normalizedSteeringInput);
+        Debug.Log("Clamped Steering Input: " + steeringInput);
+        Debug.Log("Steering Angle: " + steeringAngle);
+
     }
 
     void ApplyBrakes()

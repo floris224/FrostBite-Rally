@@ -101,7 +101,7 @@ public class SteeringWheelController : MonoBehaviour
         hand.transform.parent = bestSnap.transform;
         hand.transform.position = bestSnap.transform.position;
         */
-        steeringWheel.rotation = Quaternion.identity;
+        //steeringWheel.rotation = Quaternion.identity;
         rightHandOnWheel = true;
         leftHandOnWheel = true;
         if (leftHandOnWheel)
