@@ -19,11 +19,11 @@ public class SteeringInput : MonoBehaviour
     void LateUpdate()
     {
         //gameObject.transform.localRotation = car.transform.localRotation;
-        InputSteering();
+        //InputSteering();
         if (inputGiver.numberOfHandsOnWheel > 0)
         {
             InputSteering();
-        
+            handL.transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         
        
@@ -31,13 +31,15 @@ public class SteeringInput : MonoBehaviour
     
     private void InputSteering()
     {
-       // Quaternion handRotation = handL.rotation;
-       // float newZRot = handRotation.eulerAngles.z;
+        // Quaternion handRotation = handL.rotation;
+        // float newZRot = handRotation.eulerAngles.z;
         //transform.rotation = Quaternion.Euler(0,car.transform.rotation.y,newZRot);
 
-        float handRot = handL.localEulerAngles.z;
+       
+        float handRot = handL.localRotation.eulerAngles.z;
         Vector3 currentRotation = transform.localEulerAngles;
-        transform.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, handRot);
+        transform.localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, handRot);
+
     }
 
     

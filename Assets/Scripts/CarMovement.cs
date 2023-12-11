@@ -88,7 +88,7 @@ public class CarMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        speed = rb.velocity.magnitude;
+        speed = rb.velocity.magnitude  * 5;
         checkInput();
         if (controller.numberOfHandsOnWheel > 0 &&  OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
         {
@@ -120,38 +120,46 @@ public class CarMovement : MonoBehaviour
     }
     void ApplyHorsePower()
     {
-            colliders.RRWheel.motorTorque = horsePower * gasInput;
-            colliders.RLWheel.motorTorque = horsePower * gasInput;
-            colliders.fRWheel.motorTorque = horsePower * gasInput;
-            colliders.fLWheel.motorTorque = horsePower * gasInput;
+            rb.AddForce(transform.forward * horsePower);
+            colliders.RRWheel.motorTorque = horsePower * gasInput * Time.deltaTime;
+            colliders.RLWheel.motorTorque = horsePower * gasInput * Time.deltaTime;
+            colliders.fRWheel.motorTorque = horsePower * gasInput * Time.deltaTime;
+            colliders.fLWheel.motorTorque = horsePower * gasInput * Time.deltaTime;
     }
     public void ApplySteering()
     {
-
         float steeringWheelRotation = steeringWheel.transform.localEulerAngles.z;
         steeringWheelRotation = (steeringWheelRotation + 360) % 360;
-
+        
         float normalizedSteeringInput = (steeringWheelRotation > 180) ?
             Mathf.InverseLerp(180, 360, steeringWheelRotation) * 2 - 1 : Mathf.InverseLerp(0, 180, steeringWheelRotation) * 2;
-            
-        steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
+        
+        
+        float minSteeringInput = -1f;
+        float maxSteeringInput = 1f;
+        steeringInput = Mathf.Clamp(normalizedSteeringInput, minSteeringInput, maxSteeringInput);
 
 
+        float steeringAngle = steeringInput * steeringCurve.Evaluate(speed);
 
-        float steeringAngle = steeringInput * steeringCurve.Evaluate(speed) / 3;
+
+        float minSteeringAngle = -60;
+        float maxSteeringAngle = 60;
+       
+        if(steeringAngle <= minSteeringAngle)
+        {
+            steeringAngle = minSteeringAngle;
+        }
+        if(steeringAngle >= maxSteeringAngle)
+        {
+            steeringAngle = maxSteeringAngle;
+        }
+       
         colliders.fRWheel.steerAngle = -steeringAngle;
         colliders.fLWheel.steerAngle = -steeringAngle;
 
-
-
-
-
-        Debug.Log("Steering Wheel Rotation: " + steeringWheelRotation);
-        Debug.Log("Normalized Steering Input: " + normalizedSteeringInput);
-        Debug.Log("Clamped Steering Input: " + steeringInput);
-        Debug.Log("Steering Angle: " + steeringAngle);
-
     }
+
 
     void ApplyBrakes()
     {

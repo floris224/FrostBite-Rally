@@ -53,6 +53,21 @@ public class SteeringWheelController : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        float rotationZ = transform.rotation.z;
+        float maxRotationZ = 60;
+        float minRotationZ = -60;
+
+        if(rotationZ >= maxRotationZ)
+        {
+            rotationZ = maxRotationZ;
+        }
+        if(rotationZ <= minRotationZ)
+        {
+            rotationZ = minRotationZ;
+        }
+    }
     private void LateUpdate()
     {
        
@@ -106,6 +121,8 @@ public class SteeringWheelController : MonoBehaviour
         leftHandOnWheel = true;
         if (leftHandOnWheel)
         {
+
+            //realHandsL.transform.localEulerAngles = new Vector3(0, 0, 0);
             
             fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
             realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
@@ -118,6 +135,7 @@ public class SteeringWheelController : MonoBehaviour
         }
         if (rightHandOnWheel)
         {
+            //realHandsL.transform.localEulerAngles = new Vector3(0, 0, 0);
             fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
             realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
             player.transform.parent = car.transform;
