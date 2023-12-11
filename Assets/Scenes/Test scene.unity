@@ -910,7 +910,7 @@ PrefabInstance:
     - target: {fileID: 1789246078829667237, guid: 7a97b8b1b39d22b41953de7c049baa46,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 1789246078829667237, guid: 7a97b8b1b39d22b41953de7c049baa46,
         type: 3}
@@ -970,7 +970,7 @@ PrefabInstance:
     - target: {fileID: 2499629637299596539, guid: 7a97b8b1b39d22b41953de7c049baa46,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 2499629637299596539, guid: 7a97b8b1b39d22b41953de7c049baa46,
         type: 3}
@@ -1115,7 +1115,7 @@ PrefabInstance:
     - target: {fileID: 3462781796876009538, guid: 7a97b8b1b39d22b41953de7c049baa46,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 3462781796876009538, guid: 7a97b8b1b39d22b41953de7c049baa46,
         type: 3}
@@ -1205,7 +1205,7 @@ PrefabInstance:
     - target: {fileID: 5151069396403699846, guid: 7a97b8b1b39d22b41953de7c049baa46,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 5151069396403699846, guid: 7a97b8b1b39d22b41953de7c049baa46,
         type: 3}
