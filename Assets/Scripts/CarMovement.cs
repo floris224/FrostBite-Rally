@@ -30,7 +30,7 @@ public class CarMovement : MonoBehaviour
     public float driftAngle;
     public float maxRotation;
     public AnimationCurve steeringCurve;
-
+    public GameObject downForce;
     public SteeringWheelController controller;
     private void Awake()
     {
@@ -88,6 +88,7 @@ public class CarMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        rb.AddForce(-transform.up,ForceMode.Force);
         speed = rb.velocity.magnitude  * 5;
         checkInput();
         if (controller.numberOfHandsOnWheel > 0 &&  OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
@@ -102,7 +103,7 @@ public class CarMovement : MonoBehaviour
             gasInput = 0;
         }
 
-        if (controller.numberOfHandsOnWheel > 0 && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger, OVRInput.Controller.LTouch))
+        if (controller.numberOfHandsOnWheel > 0 && OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch))
         {
             brakeInput = MathF.Abs(gasInput);
             gasInput = 0;
@@ -164,10 +165,10 @@ public class CarMovement : MonoBehaviour
     void ApplyBrakes()
     {
         
-        colliders.fLWheel.brakeTorque = brakeTorgue * brakeInput * 0.9f;
-        colliders.fRWheel.brakeTorque = brakeTorgue * brakeInput * 0.9f;
-        colliders.RRWheel.brakeTorque = brakeTorgue * brakeInput * 0.1f;
-        colliders.RLWheel.brakeTorque = brakeTorgue * brakeInput * 0.1f;
+        colliders.fLWheel.brakeTorque = brakeTorgue * brakeInput * 0.8f;
+        colliders.fRWheel.brakeTorque = brakeTorgue * brakeInput * 0.8f;
+        colliders.RRWheel.brakeTorque = brakeTorgue * brakeInput * 0.2f;
+        colliders.RLWheel.brakeTorque = brakeTorgue * brakeInput * 0.2f;
        
     }
     void ApplyUpdateWheels()

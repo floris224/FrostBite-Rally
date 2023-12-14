@@ -12,43 +12,44 @@ public class SteeringInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        steeringWheel.transform.localPosition = Vector3.zero;
-        steeringWheel.transform.localRotation = Quaternion.identity;
+        //steeringWheel.transform.localPosition = Vector3.zero;
+       // steeringWheel.transform.localRotation = Quaternion.identity;
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        float steeringWheelRotationX = steeringWheel.transform.localRotation.x;
+        float steeringWheelRotationY = steeringWheel.transform.localRotation.y;
+        float steeringWheelRotationZ = steeringWheel.transform.localRotation.z;
+        steeringWheel.transform.position = car.transform.position;
+        steeringWheelRotationY = car.transform.localRotation.y;
+        steeringWheelRotationX = car.transform.localRotation.x;
+        /*if( steeringWheel.transform.localRotation.z >= 90)
+        {
+            steeringWheelRotationZ =
+        }
+        */
+    }
+   
     void LateUpdate()
     {
-        //gameObject.transform.localRotation = car.transform.localRotation;
-        InputSteering();
-       
-      
+        
         if (inputGiver.numberOfHandsOnWheel > 0)
         {
             InputSteering();
-            handL.transform.localEulerAngles = new Vector3(0, 0, 0);
+            
         }
 
-        steeringWheel.transform.parent = car.transform;
+       
     }
     
     private void InputSteering()
     {
-        // Quaternion handRotation = handL.rotation;
-        // float newZRot = handRotation.eulerAngles.z;
-        //transform.rotation = Quaternion.Euler(0,car.transform.rotation.y,newZRot);
-
+        
        
         float handRot = handL.localRotation.eulerAngles.z;
         float adjustedHandRotation = handRot - 90f;
-        if(handRot >= 50)
-        {
-            handRot = 90;
-        }
-        if(handRot<= -50)
-        {
-            handRot = -50;
-        }
+        
         Vector3 currentRotation = transform.localEulerAngles;
         transform.localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, adjustedHandRotation);
 
