@@ -17,6 +17,8 @@ public class SteeringWheelController : MonoBehaviour
     public bool leftHandOnWheel;
     public Transform steeringWheel;
 
+    public bool leftHandOnWheelReadyToLetGo;
+    public bool rightHandOnWheelReadyToLetGo;
    // public GameObject steeringWheel;
     public Transform[] snapPositions;
 
@@ -48,13 +50,36 @@ public class SteeringWheelController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        ReleaseHand();
+       
         
         
     }
 
     private void Update()
     {
+
+        if (leftHandOnWheel)
+        {
+            player.transform.parent = car.transform;
+            Debug.LogError("Test");
+            leftHandOnWheelReadyToLetGo = true;
+            fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            
+            numberOfHandsOnWheel++;
+
+        }
+        if (rightHandOnWheel)
+        {
+
+            player.transform.parent = car.transform;
+            fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            rightHandOnWheelReadyToLetGo = true;
+            numberOfHandsOnWheel++;
+        }
+
+        ReleaseHand();
         float rotationZ = transform.rotation.z;
         float maxRotationZ = 60;
         float minRotationZ = -60;
@@ -78,21 +103,23 @@ public class SteeringWheelController : MonoBehaviour
         if (other.CompareTag("PlayerHand"))
         {
             
-            if (rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+            if (rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
             {
                
-                PlaceHandOnWheel(/*ref rightHand, ref rightHandOriginalParent, ref rightHandOnWheel*/);
+                PlaceHandOnWheel(ref rightHand, ref rightHandOriginalParent, ref rightHandOnWheel);
+                rightHandOnWheel = true;
             }
 
-            if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+            if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
             {
                
-                PlaceHandOnWheel(/*ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel*/);
+                PlaceHandOnWheel(ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel);
+                leftHandOnWheel = true;
             }
         }
     }
 
-    private void PlaceHandOnWheel(/*ref GameObject hand, ref Transform originalParent,ref bool handOnWheel*/)
+    private void PlaceHandOnWheel(ref GameObject hand, ref Transform originalParent,ref bool handOnWheel)
     {
         /*
         var shortestDistance = Vector3.Distance(snapPositions[0].position, hand.transform.position);
@@ -112,65 +139,41 @@ public class SteeringWheelController : MonoBehaviour
                 }
             }
         }
-        originalParent = hand.transform;
+       
         hand.transform.parent = bestSnap.transform;
         hand.transform.position = bestSnap.transform.position;
         */
         //steeringWheel.rotation = Quaternion.identity;
-        rightHandOnWheel = true;
-        leftHandOnWheel = true;
-        if (leftHandOnWheel)
-        {
-
-            //realHandsL.transform.localEulerAngles = new Vector3(0, 0, 0);
-            
-            fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
-            realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
-            player.transform.parent = car.transform;
-
-            fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
-            realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
-
-
-        }
-        if (rightHandOnWheel)
-        {
-            //realHandsL.transform.localEulerAngles = new Vector3(0, 0, 0);
-            fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
-            realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
-            player.transform.parent = car.transform;
-
-            fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
-            realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
-
-
-        }
-        //handOnWheel = true;
-        numberOfHandsOnWheel++;
+      
+        
+        
+        originalParent = hand.transform;
     }
    
   
     private void ReleaseHand()
     {
-        if(rightHandOnWheel == true && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+        if(rightHandOnWheelReadyToLetGo == true && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
         {
             rightHand.transform.parent = rightHandOriginalParent;
             rightHand.transform.position = rightHandOriginalParent.transform.position;
             fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
             realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            rightHandOnWheelReadyToLetGo = false;
             rightHandOnWheel = false;
             numberOfHandsOnWheel--;
         }
-        else if (leftHandOnWheel == true && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+        else if (leftHandOnWheelReadyToLetGo == true && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
         {
             leftHand.transform.parent = leftHandOriginalParent;
             leftHand.transform.position = leftHandOriginalParent.transform.position;
 
             fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
             realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
-
+            leftHandOnWheelReadyToLetGo = false;
             leftHandOnWheel = false;
             numberOfHandsOnWheel--;
+           
         }
       
     }

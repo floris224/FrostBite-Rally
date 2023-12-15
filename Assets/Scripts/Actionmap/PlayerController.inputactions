@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "New action",
+                    "name": "Brake",
                     "type": "Button",
                     "id": "f0e72d28-8df9-4ee7-bc6d-1741b4d0b2bf",
                     "expectedControlType": "Button",
@@ -101,15 +101,26 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "f4bfa146-3983-4b55-a4fa-cb71dcb3c59a",
-                    "path": "",
+                    "name": "1D Axis",
+                    "id": "6028d89a-90ab-43fd-9bdd-596d46de3f06",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
+                    "action": "Brake",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "e5fcdf7c-adb1-4836-98fc-37cd72ef4430",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

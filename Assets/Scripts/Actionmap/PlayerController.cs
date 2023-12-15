@@ -46,7 +46,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Brake"",
                     ""type"": ""Button"",
                     ""id"": ""f0e72d28-8df9-4ee7-bc6d-1741b4d0b2bf"",
                     ""expectedControlType"": ""Button"",
@@ -123,15 +123,26 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""f4bfa146-3983-4b55-a4fa-cb71dcb3c59a"",
-                    ""path"": """",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""6028d89a-90ab-43fd-9bdd-596d46de3f06"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
+                    ""action"": ""Brake"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e5fcdf7c-adb1-4836-98fc-37cd72ef4430"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -142,7 +153,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_DriveForwards = m_Car.FindAction("DriveForwards", throwIfNotFound: true);
         m_Car_Turn = m_Car.FindAction("Turn", throwIfNotFound: true);
-        m_Car_Newaction = m_Car.FindAction("New action", throwIfNotFound: true);
+        m_Car_Brake = m_Car.FindAction("Brake", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -206,14 +217,14 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
     private readonly InputAction m_Car_DriveForwards;
     private readonly InputAction m_Car_Turn;
-    private readonly InputAction m_Car_Newaction;
+    private readonly InputAction m_Car_Brake;
     public struct CarActions
     {
         private @PlayerController m_Wrapper;
         public CarActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         public InputAction @DriveForwards => m_Wrapper.m_Car_DriveForwards;
         public InputAction @Turn => m_Wrapper.m_Car_Turn;
-        public InputAction @Newaction => m_Wrapper.m_Car_Newaction;
+        public InputAction @Brake => m_Wrapper.m_Car_Brake;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -229,9 +240,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Turn.started += instance.OnTurn;
             @Turn.performed += instance.OnTurn;
             @Turn.canceled += instance.OnTurn;
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Brake.started += instance.OnBrake;
+            @Brake.performed += instance.OnBrake;
+            @Brake.canceled += instance.OnBrake;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
@@ -242,9 +253,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Turn.started -= instance.OnTurn;
             @Turn.performed -= instance.OnTurn;
             @Turn.canceled -= instance.OnTurn;
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Brake.started -= instance.OnBrake;
+            @Brake.performed -= instance.OnBrake;
+            @Brake.canceled -= instance.OnBrake;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -266,6 +277,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     {
         void OnDriveForwards(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
     }
 }
