@@ -27,7 +27,7 @@ public class ButtonManager : MonoBehaviour
         settingMenu.SetActive(true);
     }
 
-    public void GoToCredits()
+    public void GoToCreditsMenu()
     {
         mainMenu.SetActive(false);
         creditsMenu.SetActive(true);
@@ -37,9 +37,18 @@ public class ButtonManager : MonoBehaviour
         settingMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
+    public void GoToVideoSettings()
+    {
+        settingMenu.SetActive(false);
+        videoSettingMenu.SetActive(true);
+    }
     public void GoToBackSettings()
     {
         videoSettingMenu.SetActive(false);
         settingMenu.SetActive(true);
+    }
+    public void Quit() 
+    { 
+        Application.Quit();
     }
 }
