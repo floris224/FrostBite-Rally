@@ -34,7 +34,7 @@ public class SteeringInput : MonoBehaviour
     void LateUpdate()
     {
         
-        if (inputGiver.numberOfHandsOnWheel > 0)
+        if (inputGiver.leftHandOnWheelReadyToLetGo == true || inputGiver.rightHandOnWheelReadyToLetGo == true)
         {
             InputSteering();
             
