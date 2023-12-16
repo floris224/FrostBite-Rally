@@ -7,6 +7,7 @@ TagManager:
   - SamplesInfoPanel
   - Deur
   - PlayerHand
+  - Car
   layers:
   - Default
   - TransparentFX
