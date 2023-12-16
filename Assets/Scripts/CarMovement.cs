@@ -94,7 +94,8 @@ public class CarMovement : MonoBehaviour
 
             
         }
-        
+        // dit is tijdelijk
+        ApplyHorsePowerForwards();
 
         ApplyUpdateWheels();
 
@@ -150,21 +151,26 @@ public class CarMovement : MonoBehaviour
         
         void ApplySteering()
         {
-            float steeringWheelRotation = steeringWheel.transform.localEulerAngles.z;
-            steeringWheelRotation = (steeringWheelRotation + 360) % 360;
+             float steeringWheelRotation = steeringWheel.transform.localEulerAngles.z;
 
-            float normalizedSteeringInput = (steeringWheelRotation > 180) ?
-                Mathf.InverseLerp(180, 360, steeringWheelRotation) * 2 - 1 : Mathf.InverseLerp(0, 180, steeringWheelRotation) * 2;
+            if (steeringWheelRotation > 180f)
+            {
+             steeringWheelRotation -= 360f;
+            }
+        // steeringWheelRotation = Mathf.Repeat(steeringWheelRotation, 360f);
+        float minSteeringAngle = -60f;
+            float maxSteeringAngle = 60f;
+            steeringWheelRotation = Mathf.Clamp(steeringWheelRotation, minSteeringAngle, maxSteeringAngle);
 
+            float normalizedSteeringInput = Mathf.InverseLerp(-60f,60f, steeringWheelRotation) * 2f - 1f;
+            float steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
 
-            float minSteeringInput = -1f;
-            float maxSteeringInput = 1f;
-            steeringInput = Mathf.Clamp(normalizedSteeringInput, minSteeringInput, maxSteeringInput);
 
 
             float steeringAngle = steeringInput * steeringCurve.Evaluate(speed);
 
 
+        /*
             float minSteeringAngle = -45;
             float maxSteeringAngle = 45;
 
@@ -176,6 +182,7 @@ public class CarMovement : MonoBehaviour
             {
                 steeringAngle = maxSteeringAngle;
             }
+        */
 
             colliders.fRWheel.steerAngle = -steeringAngle;
             colliders.fLWheel.steerAngle = -steeringAngle;

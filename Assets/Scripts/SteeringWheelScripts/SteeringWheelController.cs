@@ -36,8 +36,8 @@ public class SteeringWheelController : MonoBehaviour
     public GameObject realHandsR;
     public GameObject realHandsL;
     private float turnDampening = 250;
-    
 
+    public HandRot handrotationFix;
 
     public GameObject player;
     // Start is called before the first frame update
@@ -57,16 +57,16 @@ public class SteeringWheelController : MonoBehaviour
 
     private void Update()
     {
-
+        //Changes hands when interacting with the steeringwheel
         if (leftHandOnWheel)
         {
             player.transform.parent = car.transform;
-            Debug.LogError("Test");
+        
             leftHandOnWheelReadyToLetGo = true;
             fakeHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
             realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = false;
             
-            numberOfHandsOnWheel++;
+            
 
         }
         if (rightHandOnWheel)
@@ -76,10 +76,12 @@ public class SteeringWheelController : MonoBehaviour
             fakeHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
             realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = false;
             rightHandOnWheelReadyToLetGo = true;
-            numberOfHandsOnWheel++;
+            
         }
 
         ReleaseHand();
+        //Sets maxrotation over z Axis
+        /*
         float rotationZ = transform.rotation.z;
         float maxRotationZ = 60;
         float minRotationZ = -60;
@@ -92,13 +94,12 @@ public class SteeringWheelController : MonoBehaviour
         {
             rotationZ = minRotationZ;
         }
+        */
     }
-    private void LateUpdate()
+  
+    private void OnTriggerEnter(Collider other)
     {
-       
-    }
-    private void OnTriggerStay(Collider other)
-    {
+        //Checks if hands are in the collider of the steeringwheel
         
         if (other.CompareTag("PlayerHand"))
         {
@@ -112,7 +113,7 @@ public class SteeringWheelController : MonoBehaviour
 
             if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
             {
-               
+                handrotationFix.enabled = true;
                 PlaceHandOnWheel(ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel);
                 leftHandOnWheel = true;
             }
@@ -121,6 +122,8 @@ public class SteeringWheelController : MonoBehaviour
 
     private void PlaceHandOnWheel(ref GameObject hand, ref Transform originalParent,ref bool handOnWheel)
     {
+        // for later finds best snap point in steeringwheel and then searches for best grip pose
+
         /*
         var shortestDistance = Vector3.Distance(snapPositions[0].position, hand.transform.position);
         var bestSnap = snapPositions[0];
@@ -146,13 +149,16 @@ public class SteeringWheelController : MonoBehaviour
         //steeringWheel.rotation = Quaternion.identity;
       
         
-        
+        // sets the original parent transform to hands transform
         originalParent = hand.transform;
     }
    
   
     private void ReleaseHand()
     {
+
+        // checks if hands are ready to let go if so press A to let Go
+        // same goes for left hand 
         if(rightHandOnWheelReadyToLetGo == true && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
         {
             rightHand.transform.parent = rightHandOriginalParent;
@@ -161,10 +167,11 @@ public class SteeringWheelController : MonoBehaviour
             realHandsR.GetComponent<SkinnedMeshRenderer>().enabled = true;
             rightHandOnWheelReadyToLetGo = false;
             rightHandOnWheel = false;
-            numberOfHandsOnWheel--;
+            
         }
         else if (leftHandOnWheelReadyToLetGo == true && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
         {
+            handrotationFix.enabled = false;
             leftHand.transform.parent = leftHandOriginalParent;
             leftHand.transform.position = leftHandOriginalParent.transform.position;
 
@@ -172,7 +179,7 @@ public class SteeringWheelController : MonoBehaviour
             realHandsL.GetComponent<SkinnedMeshRenderer>().enabled = true;
             leftHandOnWheelReadyToLetGo = false;
             leftHandOnWheel = false;
-            numberOfHandsOnWheel--;
+            
            
         }
       
