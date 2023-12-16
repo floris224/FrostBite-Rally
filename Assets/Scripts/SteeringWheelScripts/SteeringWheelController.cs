@@ -11,7 +11,7 @@ public class SteeringWheelController : MonoBehaviour
     public GameObject rightHand;
     public Transform rightHandOriginalParent;
     public bool rightHandOnWheel;
-    //left hand
+   
     public GameObject leftHand;
     public Transform leftHandOriginalParent;
     public bool leftHandOnWheel;
@@ -19,7 +19,7 @@ public class SteeringWheelController : MonoBehaviour
 
     public bool leftHandOnWheelReadyToLetGo;
     public bool rightHandOnWheelReadyToLetGo;
-   // public GameObject steeringWheel;
+   
     public Transform[] snapPositions;
 
     public GameObject car;
@@ -35,11 +35,12 @@ public class SteeringWheelController : MonoBehaviour
 
     public GameObject realHandsR;
     public GameObject realHandsL;
-    private float turnDampening = 250;
+ 
 
     public HandRot handrotationFix;
 
     public GameObject player;
+    public Timer timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,23 +79,12 @@ public class SteeringWheelController : MonoBehaviour
             rightHandOnWheelReadyToLetGo = true;
             
         }
-
+        if(leftHandOnWheel && rightHandOnWheel)
+        {
+            timer.enabled = true;
+        }
         ReleaseHand();
-        //Sets maxrotation over z Axis
-        /*
-        float rotationZ = transform.rotation.z;
-        float maxRotationZ = 60;
-        float minRotationZ = -60;
-
-        if(rotationZ >= maxRotationZ)
-        {
-            rotationZ = maxRotationZ;
-        }
-        if(rotationZ <= minRotationZ)
-        {
-            rotationZ = minRotationZ;
-        }
-        */
+       
     }
   
     private void OnTriggerEnter(Collider other)
