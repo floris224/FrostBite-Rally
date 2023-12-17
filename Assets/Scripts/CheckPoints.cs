@@ -24,8 +24,6 @@ public class CheckPoints : MonoBehaviour
     private void Update()
     {
 
-        checkPointRecord = Saveoad.loadTime;
-        Debug.Log(checkPointRecord);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -35,7 +33,7 @@ public class CheckPoints : MonoBehaviour
            
            
            
-            if (checkPointTime < checkPointRecord|| firstRun)
+            if (checkPointTime <= checkPointRecord|| firstRun)
             {
                 // ui als ui sneller is
                 checkPointRecord = checkPointTime;

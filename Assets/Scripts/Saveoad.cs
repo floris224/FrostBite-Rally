@@ -6,7 +6,8 @@ public class Saveoad : MonoBehaviour
 {
     public CheckPoints[] checkPoints;
     public int checkPointIdex;
-    public float loadTime;
+    
+    public float[] loadTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,21 +26,27 @@ public class Saveoad : MonoBehaviour
         PlayerPrefs.SetFloat("Time", checkPoints[checkPointIdex].checkPointTime);
         Debug.Log($"Saved Time: {checkPoints[checkPointIdex].checkPointTime}");
     }
-    public float LoadData()
+    public void LoadData()
     {
-        loadTime = PlayerPrefs.GetFloat("Time");
-        if(loadTime != 0)
+        loadTime = new float[checkPoints.Length];
+       
+        for(int i = 0; i < checkPoints.Length; i++)
         {
-            checkPoints[checkPointIdex].checkPointRecord = loadTime;
-            Debug.Log($"Loaded Time: {checkPoints[checkPointIdex].checkPointTime} from {loadTime}");
+            loadTime[i] = PlayerPrefs.GetFloat("Time" + i);
+            if (loadTime[i] != 0)
+            {
+                checkPoints[i].checkPointRecord = loadTime[i];
+                Debug.Log($"Loaded Time: {checkPoints[checkPointIdex].checkPointTime} from {loadTime}");
+            }
+            else
+            {
+                Debug.Log("TisBedTijd");
+            }
         }
-        else
-        {
-            Debug.Log("TisBedTijd");
-        }
+       
         
         
-        return loadTime;
+       
 
     }
     public float GetData()
