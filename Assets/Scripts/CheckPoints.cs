@@ -7,36 +7,50 @@ public class CheckPoints : MonoBehaviour
 {
     public int checkPointIndex;
     public Timer timer;
-    public SafeLoad safeLoad;
-
+    //public SafeLoad safeLoad;
+    public Saveoad Saveoad;
     public TMP_Text recordTimer;
     public TMP_Text slowerTimer;
-    public float timeDifferenceToFastest;
+   
     public float checkPointTime;
+    public float checkPointRecord;
+    public bool firstRun = true;
 
     private void Start()
     {
 
-        LoadCheckpointTimer();
+       
+    }
+    private void Update()
+    {
+
+        checkPointRecord = Saveoad.loadTime;
+        Debug.Log(checkPointRecord);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Car"))
         {
-            Debug.Log($"Entered checkpoint with index: {checkPointIndex}");
             checkPointTime = timer.currentTime;
-            bool isRecordTimer = SaveCheckpointTimer();
-            if (isRecordTimer)
+           
+           
+           
+            if (checkPointTime < checkPointRecord|| firstRun)
             {
                 // ui als ui sneller is
-                recordTimer.text = safeLoad.GetCheckPointTime(checkPointIndex) + "New Record";
+                checkPointRecord = checkPointTime;
+                Saveoad.SaveData();
+                recordTimer.text = Saveoad.GetData() + "New Record";
                 recordTimer.enabled = true;
                 slowerTimer.enabled = false;
+                firstRun = false;
+                Saveoad.checkPointIdex++;
 
             }
             else
             {
                 // ui als niet sneller is
+                Saveoad.checkPointIdex++;
                 UpdateSlowerTimer();
                 recordTimer.enabled = false;
             }
@@ -45,23 +59,13 @@ public class CheckPoints : MonoBehaviour
     }
     private void UpdateSlowerTimer()
     {
-        timeDifferenceToFastest = checkPointTime;
-        float recordTimer = safeLoad.GetCheckPointTime(checkPointIndex);
+        
+        float recordTimer = Saveoad.GetData();
         float currentCheckPointTime = timer.currentTime;
         float timeDiffrence =  currentCheckPointTime - recordTimer;
         slowerTimer.text = $"Slower: {timeDiffrence:F2} seconds";
         slowerTimer.enabled = true;
     }
-    private bool SaveCheckpointTimer()
-    {
-       
-        return safeLoad.SaveCheckPointTime(checkPointIndex, checkPointTime);
-    }
 
-    private void LoadCheckpointTimer()
-    {
-        checkPointTime = safeLoad.GetCheckPointTime(checkPointIndex);
-        Debug.Log($"Loaded checkpoint time for index {checkPointIndex}: {checkPointTime}");
-    }
 }
 

@@ -6,7 +6,7 @@ public class SafeLoad : MonoBehaviour
 {
     public CheckPoints checkPointsScript;
     public Timer timer;
-    private Dictionary<int, float> checkPointTimes= new Dictionary<int, float>();
+    private Dictionary<int, float> checkPointTimes = new Dictionary<int, float>();
     // Start is called before the first frame update
     void Start()
     {
