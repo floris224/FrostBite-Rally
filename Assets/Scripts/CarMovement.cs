@@ -76,7 +76,7 @@ public class CarMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.AddForce(-transform.up, ForceMode.Force);
+        rb.AddForce(-transform.up  *2, ForceMode.Force);
         speed = rb.velocity.magnitude;
         checkInput();
         if (controller.leftHandOnWheelReadyToLetGo == true || controller.rightHandOnWheelReadyToLetGo == true)
