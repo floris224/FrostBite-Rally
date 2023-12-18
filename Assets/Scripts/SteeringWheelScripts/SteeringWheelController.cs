@@ -93,15 +93,15 @@ public class SteeringWheelController : MonoBehaviour
         
         if (other.CompareTag("PlayerHand"))
         {
-            
-            if (rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
+           
+            if (rightHandOnWheel == false /*&& OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)*/)
             {
-               
+                Debug.Log("Hands are in");
                 PlaceHandOnWheel(ref rightHand, ref rightHandOriginalParent, ref rightHandOnWheel);
                 rightHandOnWheel = true;
             }
 
-            if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
+            if(leftHandOnWheel == false /*&& OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch)*/)
             {
                 handrotationFix.enabled = true;
                 PlaceHandOnWheel(ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel);

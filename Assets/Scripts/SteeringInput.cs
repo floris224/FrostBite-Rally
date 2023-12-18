@@ -18,18 +18,19 @@ public class SteeringInput : MonoBehaviour
     private void Update()
     {
        
-        steeringWheel.transform.position = car.transform.position;
+       //steeringWheel.transform.position = car.transform.position;
         
         
     }
    
     void LateUpdate()
     {
-        InputSteering();
+       
         if (inputGiver.leftHandOnWheelReadyToLetGo == true || inputGiver.rightHandOnWheelReadyToLetGo == true)
         {
-           // InputSteering();
-            
+            InputSteering();
+            // InputSteering();
+
         }
 
        

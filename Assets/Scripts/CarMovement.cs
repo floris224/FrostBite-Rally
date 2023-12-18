@@ -94,8 +94,7 @@ public class CarMovement : MonoBehaviour
 
             
         }
-        // dit is tijdelijk
-        ApplyHorsePowerForwards();
+        
 
         ApplyUpdateWheels();
 
@@ -103,7 +102,7 @@ public class CarMovement : MonoBehaviour
         
          if (controller.leftHandOnWheelReadyToLetGo == true || controller.rightHandOnWheelReadyToLetGo == true)
          {
-            if(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.5f)
+            if(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) > 0.5f)
             {
                 brakeInput = 1;
                 ApplyBrakes();
@@ -119,7 +118,7 @@ public class CarMovement : MonoBehaviour
 
         if (controller.leftHandOnWheelReadyToLetGo == true || controller.rightHandOnWheelReadyToLetGo == true)
         {
-            if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) > 0.5f)
+            if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.5f)
             {
                 gasInput = -1;
                 ApplyHorsePowerBack();
