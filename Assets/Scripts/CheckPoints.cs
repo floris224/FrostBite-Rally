@@ -18,11 +18,11 @@ public class CheckPoints : MonoBehaviour
 
     private void Start()
     {
-
-       
+        
     }
     private void Update()
     {
+        Saveoad.loadTime[checkPointIndex] = checkPointRecord;
 
     }
     private void OnTriggerEnter(Collider other)
