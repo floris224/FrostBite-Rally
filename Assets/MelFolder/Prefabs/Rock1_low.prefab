@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8722377464706692911}
   - component: {fileID: 3908879295446014560}
   - component: {fileID: 5441782719429312861}
+  - component: {fileID: 2059549397778467054}
   m_Layer: 0
   m_Name: Rock1_low
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2059549397778467054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068683284688948851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.61316305, y: 0.538532, z: 0.7520304}
+  m_Center: {x: 0.0013150573, y: -0.003806606, z: 0.0010958761}
