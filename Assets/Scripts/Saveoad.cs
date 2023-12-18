@@ -23,7 +23,7 @@ public class Saveoad : MonoBehaviour
     }
     public void SaveData()
     {
-        PlayerPrefs.SetFloat("Time", checkPoints[checkPointIdex].checkPointTime);
+        PlayerPrefs.SetFloat("Time" + checkPointIdex, checkPoints[checkPointIdex].checkPointTime);
         Debug.Log($"Saved Time: {checkPoints[checkPointIdex].checkPointTime}");
     }
     public void LoadData()
