@@ -8,6 +8,8 @@ TagManager:
   - Deur
   - PlayerHand
   - Car
+  - turnRight
+  - littleRight
   layers:
   - Default
   - TransparentFX
