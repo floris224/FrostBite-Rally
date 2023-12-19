@@ -24,6 +24,18 @@ public class DirectionArrows : MonoBehaviour
             arrowLittleLeft.SetActive(true);
             arrowLittleRight.SetActive(true);
         }
+        if( tag == "goStraight")
+        {
+            arrowStrait.SetActive(true);
+        }
+        if(tag == "uTurn")
+        {
+            arrowUturnLeft.SetActive(true);
+        }
+        if(tag == "turnLeft")
+        {
+            arrowLeft.SetActive(true);
+        }
         
 
     }
@@ -38,6 +50,14 @@ public class DirectionArrows : MonoBehaviour
         {
             arrowLittleLeft.SetActive(false);
             arrowLittleRight.SetActive(false);
+        }
+        if (tag == "goStraight")
+        {
+            arrowStrait.SetActive(false);
+        }
+        if (tag == "uTurn")
+        {
+            arrowUturnLeft.SetActive(true);
         }
     }
 
