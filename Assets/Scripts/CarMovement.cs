@@ -27,11 +27,12 @@ public class CarMovement : MonoBehaviour
     public float gasInput;
     public float steeringInput;
     public float gasinputVR;
-   
+    public float brakeTorqueF;
+    public float brakeTorqueR;
     public float brakeTorgue;
     public float brakeInput;
-    public float speed;
-    public float driftAngle;
+    private float speed;
+    //public float driftAngle;
     public float maxRotation;
     public AnimationCurve steeringCurve;
     public GameObject downForce;
@@ -69,7 +70,7 @@ public class CarMovement : MonoBehaviour
         gasInput = driveInputfw.ReadValue<float>();
         brakeInput = brakeInputs.ReadValue<float>();
         steeringInput = rotationInput.ReadValue<float>();
-        driftAngle = Vector3.Angle(transform.forward, rb.velocity);
+        //driftAngle = Vector3.Angle(transform.forward, rb.velocity);
         
         
          
@@ -200,10 +201,10 @@ public class CarMovement : MonoBehaviour
         void ApplyBrakes()
         {
 
-            colliders.fLWheel.brakeTorque = brakeTorgue * brakeInput * 0.8f;
-            colliders.fRWheel.brakeTorque = brakeTorgue * brakeInput * 0.8f;
-            colliders.RRWheel.brakeTorque = brakeTorgue * brakeInput * 0.2f;
-            colliders.RLWheel.brakeTorque = brakeTorgue * brakeInput * 0.2f;
+            colliders.fLWheel.brakeTorque = brakeTorgue * brakeInput * brakeTorqueF;
+            colliders.fRWheel.brakeTorque = brakeTorgue * brakeInput * brakeTorqueF;
+            colliders.RRWheel.brakeTorque = brakeTorgue * brakeInput * brakeTorqueR;
+            colliders.RLWheel.brakeTorque = brakeTorgue * brakeInput * brakeTorqueR;
             
         }
         void ApplyUpdateWheels()
