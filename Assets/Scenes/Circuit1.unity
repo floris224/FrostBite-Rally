@@ -18,7 +18,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 2
-  m_FogDensity: 0.007
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
@@ -1506,7 +1506,7 @@ PrefabInstance:
     - target: {fileID: 8479525348315955499, guid: 2b9d140ee5e77364a91d87760b673a35,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2209,7 +2209,12 @@ PrefabInstance:
     - target: {fileID: 902677432261865966, guid: 38c50ea7495bd4946bbe7eb88b9dc401,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581963614765078102, guid: 38c50ea7495bd4946bbe7eb88b9dc401,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.232
       objectReference: {fileID: 0}
     - target: {fileID: 3043167859169638624, guid: 38c50ea7495bd4946bbe7eb88b9dc401,
         type: 3}
@@ -2380,6 +2385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: R33Rally-Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 264102094011768784, guid: bd7f1ab262f78cf4496ea0e526167da5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 639959576312169834, guid: bd7f1ab262f78cf4496ea0e526167da5,
         type: 3}
@@ -4856,7 +4866,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511787412589148083}
-  m_Material: {fileID: 13400000, guid: f695220decbfb924aa8948829448a125, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
