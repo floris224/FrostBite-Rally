@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
+    public PutVrOn putVrOn;
     public GameObject mainMenu;
     public GameObject settingMenu;
     public GameObject videoSettingMenu;
     public GameObject creditsMenu;
-
+    public GameObject putOnVR;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,12 @@ public class ButtonManager : MonoBehaviour
     {
         
     }
-
+    public void StartGame()
+    {
+        putVrOn.startIsPressed = true;
+        mainMenu.SetActive(false);
+        putOnVR.SetActive(true);
+    }
     public void GoToSettings()
     {
         mainMenu.SetActive(false);

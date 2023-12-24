@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+using Unity.VisualScripting;
 
 public class RaycastHand : MonoBehaviour
 {
     public float rayLenght = 100f;
+   
     RaycastHit hit;
     private LineRenderer lineRenderer;
     // Start is called before the first frame update
@@ -50,13 +53,18 @@ public class RaycastHand : MonoBehaviour
 
                     Button button = hit.collider.GetComponent<Button>();
                     Dropdown dropdown = hit.collider.GetComponent<Dropdown>();
+                    Toggle toggle = hit.collider.GetComponent<Toggle>();
                     if (button != null)
                     {
                         button.onClick.Invoke();
                     }
-                    else if(dropdown != null)
+                    if(dropdown != null)
                     {
                         dropdown.Show();
+                    }
+                    if(toggle != null)
+                    {
+                        toggle.isOn = !toggle.isOn;
                     }
                 }
 
