@@ -14,6 +14,7 @@ TagManager:
   - uTurnLeft
   - uTurnRight
   - turnLeft
+  - Settings
   layers:
   - Default
   - TransparentFX
