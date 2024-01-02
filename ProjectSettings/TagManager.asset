@@ -17,6 +17,7 @@ TagManager:
   - Settings
   - PlayerHandR
   - PlayerHandL
+  - VR
   layers:
   - Default
   - TransparentFX
