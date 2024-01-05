@@ -30,31 +30,37 @@ public class CheckPoints : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             checkPointTime = timer.currentTime;
-           
-           
-           
-            if (checkPointTime <= checkPointRecord|| firstRun)
+
+
+            if (Saveoad.HasPassedPreviousCheckpoint(checkPointIndex))
             {
-                // ui als ui sneller is
-                checkPointRecord = checkPointTime;
-                Saveoad.SaveData();
-                recordTimer.text = Saveoad.GetData() + "New Record";
-                recordTimer.enabled = true;
-                slowerTimer.enabled = false;
-                firstRun = false;
-                Saveoad.checkPointIdex++;
+                if (checkPointTime <= checkPointRecord || firstRun)
+                {
+                    // ui als ui sneller is
+                    checkPointRecord = checkPointTime;
+                    Saveoad.AddPassedCheckPoints(checkPointIndex);
+                    Saveoad.SaveData();
+                    recordTimer.text = Saveoad.GetData() + "New Record";
+                    recordTimer.enabled = true;
+                    slowerTimer.enabled = false;
+                    firstRun = false;
+                    Saveoad.checkPointIdex++;
+
+                }
+                else
+                {
+                    // ui als niet sneller is
+                    Saveoad.checkPointIdex++;
+                    UpdateSlowerTimer();
+                    recordTimer.enabled = false;
+                }
 
             }
-            else
-            {
-                // ui als niet sneller is
-                Saveoad.checkPointIdex++;
-                UpdateSlowerTimer();
-                recordTimer.enabled = false;
-            }
+           
         }
         
     }
+    
     private void UpdateSlowerTimer()
     {
         

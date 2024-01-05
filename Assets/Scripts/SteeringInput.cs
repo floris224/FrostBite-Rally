@@ -6,6 +6,7 @@ using UnityEngine;
 public class SteeringInput : MonoBehaviour
 {
     public Transform handL;
+    public Transform handR;
     public SteeringWheelController inputGiver;
     public GameObject car;
     public GameObject steeringWheel;
@@ -39,10 +40,26 @@ public class SteeringInput : MonoBehaviour
     private void InputSteering()
     {
         
-       
-        float handRot = handL.localRotation.eulerAngles.z;
-        transform.localRotation = Quaternion.Euler(0,0, handRot);
+       if(inputGiver.leftHandOnWheelReadyToLetGo == false)
+       {
+            float handRotR = handR.localRotation.eulerAngles.z;
+            transform.localRotation = Quaternion.Euler(0, 0, handRotR);
+       }
+       if(inputGiver.rightHandOnWheelReadyToLetGo == false)
+       {
+            float handRotL = handL.localRotation.eulerAngles.z;
+            transform.localRotation = Quaternion.Euler(0, 0, handRotL);
+       }
+       if(inputGiver.leftHandOnWheelReadyToLetGo== true || inputGiver.rightHandOnWheelReadyToLetGo == true)
+       {
+            float handRotL = handL.localRotation.eulerAngles.z;
 
+            //Testing
+            float handRotR = handR.localRotation.eulerAngles.z;
+            float bothHandRotation = handRotL + handRotR / 2;
+            transform.localRotation = Quaternion.Euler(0, 0, bothHandRotation);
+       }
+        
     }
 
     
