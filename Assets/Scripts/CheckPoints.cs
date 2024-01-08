@@ -53,6 +53,7 @@ public class CheckPoints : MonoBehaviour
                     Saveoad.checkPointIdex++;
                     UpdateSlowerTimer();
                     recordTimer.enabled = false;
+                    
                 }
 
             }
@@ -63,10 +64,10 @@ public class CheckPoints : MonoBehaviour
     
     private void UpdateSlowerTimer()
     {
-        
-        float recordTimer = Saveoad.GetData();
+
+        float recordTimer = checkPointRecord;
         float currentCheckPointTime = timer.currentTime;
-        float timeDiffrence =  recordTimer - currentCheckPointTime;
+        float timeDiffrence =  currentCheckPointTime - recordTimer;
         slowerTimer.text = $"Slower: {timeDiffrence:F2} seconds";
         slowerTimer.enabled = true;
     }

@@ -44,7 +44,7 @@ public class SteeringInput : MonoBehaviour
         
        if(inputGiver.leftHandOnWheelReadyToLetGo == false)
        {
-            float handRotR = -handR.localRotation.eulerAngles.z;
+            float handRotR = handR.localRotation.eulerAngles.z;
             transform.localRotation = Quaternion.Euler(0, 0, handRotR);
         }
        if(inputGiver.rightHandOnWheelReadyToLetGo == false)
