@@ -30,11 +30,11 @@ public class CheckPoints : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             checkPointTime = timer.currentTime;
-
+            Debug.Log("Made it");
 
             if (Saveoad.HasPassedPreviousCheckpoint(checkPointIndex))
             {
-                if (checkPointTime <= checkPointRecord || firstRun)
+                if (checkPointTime < checkPointRecord || firstRun)
                 {
                     // ui als ui sneller is
                     checkPointRecord = checkPointTime;
@@ -66,7 +66,7 @@ public class CheckPoints : MonoBehaviour
         
         float recordTimer = Saveoad.GetData();
         float currentCheckPointTime = timer.currentTime;
-        float timeDiffrence =  currentCheckPointTime - recordTimer;
+        float timeDiffrence =  recordTimer - currentCheckPointTime;
         slowerTimer.text = $"Slower: {timeDiffrence:F2} seconds";
         slowerTimer.enabled = true;
     }

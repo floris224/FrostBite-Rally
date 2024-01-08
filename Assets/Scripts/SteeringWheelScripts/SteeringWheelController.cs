@@ -79,7 +79,7 @@ public class SteeringWheelController : MonoBehaviour
             rightHandOnWheelReadyToLetGo = true;
             
         }
-        if(leftHandOnWheel && rightHandOnWheel)
+        if(leftHandOnWheel && rightHandOnWheel || leftHandOnWheel || rightHandOnWheel)
         {
             timer.enabled = true;
         }
@@ -87,21 +87,21 @@ public class SteeringWheelController : MonoBehaviour
        
     }
   
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         //Checks if hands are in the collider of the steeringwheel
         
         if (other.CompareTag("PlayerHand"))
         {
            
-            if (rightHandOnWheel == false /*&& OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)*/)
+            if (rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
             {
                 Debug.Log("Hands are in");
                 PlaceHandOnWheel(ref rightHand, ref rightHandOriginalParent, ref rightHandOnWheel);
                 rightHandOnWheel = true;
             }
 
-            if(leftHandOnWheel == false /*&& OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch)*/)
+            if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
             {
                 handrotationFix.enabled = true;
                 PlaceHandOnWheel(ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel);
@@ -149,7 +149,7 @@ public class SteeringWheelController : MonoBehaviour
 
         // checks if hands are ready to let go if so press A to let Go
         // same goes for left hand 
-        if(rightHandOnWheelReadyToLetGo == true && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        if(rightHandOnWheelReadyToLetGo == true && OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
         {
             rightHand.transform.parent = rightHandOriginalParent;
             rightHand.transform.position = rightHandOriginalParent.transform.position;
@@ -159,7 +159,7 @@ public class SteeringWheelController : MonoBehaviour
             rightHandOnWheel = false;
             
         }
-        else if (leftHandOnWheelReadyToLetGo == true && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
+        else if (leftHandOnWheelReadyToLetGo == true && OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
         {
             handrotationFix.enabled = false;
             leftHand.transform.parent = leftHandOriginalParent;

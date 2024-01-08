@@ -61,7 +61,12 @@ public class Saveoad : MonoBehaviour
     }
     public bool HasPassedPreviousCheckpoint(int currentCheckPointIndex)
     {
+        if (checkPoints.Length >= 0)
+        {
+            return true;
+        }
         return passedCheckPoints.Contains(currentCheckPointIndex - 1);
+
     }
     public void AddPassedCheckPoints(int checkPointIndex)
     {
@@ -89,6 +94,6 @@ public class Saveoad : MonoBehaviour
     }
     public void LoadLeaderBoardTime()
     {
-        if (leaderBoardTimes[1]// needs to be pressed with a button in vr and there a 6 places )
+      // needs to be pressed with a button in vr and there a 6 places )
     }
 }
