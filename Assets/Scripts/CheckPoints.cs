@@ -18,11 +18,11 @@ public class CheckPoints : MonoBehaviour
 
     private void Start()
     {
-        
+        Saveoad.LoadData();
     }
     private void Update()
     {
-        Saveoad.loadTime[checkPointIndex] = checkPointRecord;
+        
 
     }
     private void OnTriggerEnter(Collider other)
@@ -38,14 +38,20 @@ public class CheckPoints : MonoBehaviour
                 {
                     // ui als ui sneller is
                     checkPointRecord = checkPointTime;
+
+                    
                     Saveoad.AddPassedCheckPoints(checkPointIndex);
                     Saveoad.SaveData();
-                    recordTimer.text = Saveoad.GetData() + "New Record";
+                    recordTimer.text = Saveoad.GetData(checkPointIndex) + "New Record";
+                       
                     recordTimer.enabled = true;
                     slowerTimer.enabled = false;
                     firstRun = false;
                     Saveoad.checkPointIdex++;
-
+                    if(Saveoad.checkPointIdex == Saveoad.checkPoints.Length)
+                    {
+                        //lapped
+                    }
                 }
                 else
                 {
@@ -72,5 +78,6 @@ public class CheckPoints : MonoBehaviour
         slowerTimer.enabled = true;
     }
 
+  
 }
 

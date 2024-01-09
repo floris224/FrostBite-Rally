@@ -39,7 +39,7 @@ public class RaycastHand : MonoBehaviour
         lineRenderer.SetPosition(1,transform.position + transform.forward * rayLenght);
         
     }
-    void PeformRaycast()
+    public void PeformRaycast()
     {
         int layerMask = 1 << LayerMask.NameToLayer("UI");
         Ray ray = new Ray(transform.position, transform.forward);
@@ -50,10 +50,11 @@ public class RaycastHand : MonoBehaviour
             {
                 if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
                 {
-
+                    
                     Button button = hit.collider.GetComponent<Button>();
                     Dropdown dropdown = hit.collider.GetComponent<Dropdown>();
                     Toggle toggle = hit.collider.GetComponent<Toggle>();
+                   
                     if (button != null)
                     {
                         button.onClick.Invoke();
@@ -66,6 +67,7 @@ public class RaycastHand : MonoBehaviour
                     {
                         toggle.isOn = !toggle.isOn;
                     }
+                    
                 }
 
             }

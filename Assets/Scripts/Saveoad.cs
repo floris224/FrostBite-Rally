@@ -2,36 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class Saveoad : MonoBehaviour
 {
-    public GameObject[] placementLeaderBoard;
+  
     public CheckPoints[] checkPoints;
     public int checkPointIdex;
     public List<int> passedCheckPoints;
-    
-    public List<float> leaderBoardTimes = new List<float>();
-
+    public List<Button> buttonList;
+   
     public float[] loadTime;
+
+    private int currentPlayerIndex;
+   
+
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        LoadData();
-        
+        currentPlayerIndex = 0;
     }
     
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void CheckLeaderBoard()
-    {
-
-    }
     public void SaveData()
     {
-        PlayerPrefs.SetFloat("Time" + checkPointIdex, checkPoints[checkPointIdex].checkPointTime);
+        int runIndex = currentPlayerIndex;
+
+        for(int i = 0; i < checkPoints.Length; i++)
+        {
+            PlayerPrefs.SetFloat($"Run{runIndex}_Time{i}" , checkPoints[i].checkPointTime);
+        }
+        
       
     }
     public void LoadData()
@@ -41,24 +42,21 @@ public class Saveoad : MonoBehaviour
        
         for(int i = 0; i < checkPoints.Length; i++)
         {
-            loadTime[i] = PlayerPrefs.GetFloat("Time" + i);
+            loadTime[i] = PlayerPrefs.GetFloat($"Run{currentPlayerIndex}_Time{i}");
             if (loadTime[i] != 0)
             {
                 checkPoints[i].checkPointRecord = loadTime[i];
-             
-            }
-           
-        }
-       
-        
-        
-       
 
+            }
+            
+        }
     }
-    public float GetData()
+
+    public float GetData(int checkpointIndex)
     {
-        return PlayerPrefs.GetFloat("Timer");
+        return PlayerPrefs.GetFloat($"Profile{checkPointIdex}_Time{checkpointIndex}");
     }
+
     public bool HasPassedPreviousCheckpoint(int currentCheckPointIndex)
     {
         if (checkPoints.Length >= 0)
@@ -72,28 +70,9 @@ public class Saveoad : MonoBehaviour
     {
         passedCheckPoints.Add(checkPointIndex);
     }
-    public void OnApplicationQuit()
-    {
-        SaveData();
-    }
-
-    public void UpdateLeaderBoard(float playerTime)
-    {
-
-        leaderBoardTimes.Add(playerTime);
-        leaderBoardTimes.Sort();
-        leaderBoardTimes.Reverse();
-        
-    }
-    private void SaveLeaderBoard()
-    {
-        for (int i = 0; i < Mathf.Min(leaderBoardTimes.Count, placementLeaderBoard.Length); i++)
-        {
-            PlayerPrefs.SetFloat("LeaderBoardTime" + i, leaderBoardTimes[i]);
-        }
-    }
-    public void LoadLeaderBoardTime()
-    {
-      // needs to be pressed with a button in vr and there a 6 places )
-    }
+    
+   
+    
+   
+    
 }
