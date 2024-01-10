@@ -37,6 +37,8 @@ public class CarMovement : MonoBehaviour
     public AnimationCurve steeringCurve;
     public GameObject downForce;
     public SteeringWheelController controller;
+
+    public AudioSource carRideSound;
     private void Awake()
     {
 
@@ -85,11 +87,12 @@ public class CarMovement : MonoBehaviour
             if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.5f)
             {
                 gasInput = 1;
-                Debug.LogError("test");
+                carRideSound.enabled = true;
                 ApplyHorsePowerForwards();
             }
             else
             {
+                carRideSound.enabled=false;
                 gasInput = 0;
             }
 

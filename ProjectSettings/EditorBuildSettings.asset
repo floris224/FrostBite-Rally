@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Wood Cabin.unity
     guid: b18c2ca54b90bf24d9e34d67ce371e20
   - enabled: 1
-    path: Assets/Scenes/Test scene.unity
-    guid: 6a00590ceb0a2f34092fdcc97351cd61
+    path: Assets/Scenes/Circuit1.unity
+    guid: 52cbe2fbbb4ea984290c2ceb4d0e789d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0a7853418d2a343488657b6416941600,
       type: 2}

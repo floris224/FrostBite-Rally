@@ -2419,12 +2419,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674195827}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.011553379, y: -0.7308159, z: -0.0115379, w: 0.68237936}
+  m_LocalPosition: {x: 284.28925, y: -104.9754, z: -517.8357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1562020398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &685309945
 GameObject:
@@ -3488,6 +3488,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3807438750379086308, guid: bd7f1ab262f78cf4496ea0e526167da5,
         type: 3}
+      propertyPath: carRideSound
+      value: 
+      objectReference: {fileID: 1562020401}
+    - target: {fileID: 3807438750379086308, guid: bd7f1ab262f78cf4496ea0e526167da5,
+        type: 3}
       propertyPath: steeringWheel
       value: 
       objectReference: {fileID: 1319578540}
@@ -3635,7 +3640,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 638243788}
-    m_AddedComponents: []
+    - targetCorrespondingSourceObject: {fileID: 639959576312169834, guid: bd7f1ab262f78cf4496ea0e526167da5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 674195828}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 264102094011768784, guid: bd7f1ab262f78cf4496ea0e526167da5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1562020401}
   m_SourcePrefab: {fileID: 100100000, guid: bd7f1ab262f78cf4496ea0e526167da5, type: 3}
 --- !u!23 &1188293372 stripped
 MeshRenderer:
@@ -4752,6 +4765,103 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1033162309}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1562020401
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562020394}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 424509c08f7876d44928236482586094,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: bab909159d8b4e94abe8e9f2c0268e44, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.506
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1567309416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7222,7 +7332,6 @@ SceneRoots:
   - {fileID: 1896619703}
   - {fileID: 507477238}
   - {fileID: 112273658}
-  - {fileID: 674195828}
   - {fileID: 1033162309}
   - {fileID: 1965812839}
   - {fileID: 47927097}

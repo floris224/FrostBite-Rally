@@ -18,6 +18,8 @@ TagManager:
   - PlayerHandR
   - PlayerHandL
   - VR
+  - Scherm
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX

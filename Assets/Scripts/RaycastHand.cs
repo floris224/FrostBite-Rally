@@ -16,8 +16,10 @@ public class RaycastHand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         lineRenderer = GetComponent<LineRenderer>();
-        if(lineRenderer == null)
+        if (lineRenderer == null)
         {
             lineRenderer = gameObject.AddComponent<LineRenderer>();
         }
@@ -26,7 +28,6 @@ public class RaycastHand : MonoBehaviour
         lineRenderer.endColor = Color.green;
         lineRenderer.startWidth = 0.009f;
         lineRenderer.endWidth = 0.009f;
-        
     }
 
     // Update is called once per frame
@@ -46,31 +47,36 @@ public class RaycastHand : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, rayLenght,layerMask))
         {
-            if (hit.collider.tag == "Settings")
-            {
-                if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
+            
+                if (hit.collider.tag == "Settings")
                 {
-                    
-                    Button button = hit.collider.GetComponent<Button>();
-                    Dropdown dropdown = hit.collider.GetComponent<Dropdown>();
-                    Toggle toggle = hit.collider.GetComponent<Toggle>();
-                   
-                    if (button != null)
-                    {
-                        button.onClick.Invoke();
-                    }
-                    if(dropdown != null)
-                    {
-                        dropdown.Show();
-                    }
-                    if(toggle != null)
-                    {
-                        toggle.isOn = !toggle.isOn;
-                    }
-                    
-                }
+                
 
-            }
+                    if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
+                    {
+
+                        Button button = hit.collider.GetComponent<Button>();
+                        Dropdown dropdown = hit.collider.GetComponent<Dropdown>();
+                        Toggle toggle = hit.collider.GetComponent<Toggle>();
+
+                        if (button != null)
+                        {
+                            button.onClick.Invoke();
+                        }
+                        if (dropdown != null)
+                        {
+                            dropdown.Show();
+                        }
+                        if (toggle != null)
+                        {
+                            toggle.isOn = !toggle.isOn;
+                        }
+
+                    }
+                }
+               
+
+            
         }
 
     }
