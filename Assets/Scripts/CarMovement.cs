@@ -39,27 +39,28 @@ public class CarMovement : MonoBehaviour
     public SteeringWheelController controller;
 
     public AudioSource carRideSound;
+    /*
     private void Awake()
     {
 
-        driveInputfw = asset.FindAction("DriveForwards");
+        //driveInputfw = asset.FindAction("DriveForwards");
         rotationInput = asset.FindAction("Turn");
         brakeInputs = asset.FindAction("Brake");
        
     }
     private void OnEnable()
     {
-        driveInputfw.Enable();
+        //driveInputfw.Enable();
         rotationInput.Enable();
         brakeInputs.Enable();
     }
     private void OnDisable()
     {
-        driveInputfw.Disable();
+        //driveInputfw.Disable();
         rotationInput.Disable();
         brakeInputs.Disable();
     }
-
+    */
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +70,7 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void checkInput()
     {
-        gasInput = driveInputfw.ReadValue<float>();
+        //gasInput = driveInputfw.ReadValue<float>();
         brakeInput = brakeInputs.ReadValue<float>();
         steeringInput = rotationInput.ReadValue<float>();
         //driftAngle = Vector3.Angle(transform.forward, rb.velocity);
