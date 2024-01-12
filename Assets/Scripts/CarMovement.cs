@@ -161,11 +161,11 @@ public class CarMovement : MonoBehaviour
              steeringWheelRotation -= 360f;
             }
         // steeringWheelRotation = Mathf.Repeat(steeringWheelRotation, 360f);
-        float minSteeringAngle = -60f;
-            float maxSteeringAngle = 60f;
+        float minSteeringAngle = -70f;
+            float maxSteeringAngle = 70f;
             steeringWheelRotation = Mathf.Clamp(steeringWheelRotation, minSteeringAngle, maxSteeringAngle);
 
-            float normalizedSteeringInput = Mathf.InverseLerp(-60f,60f, steeringWheelRotation) * 2f - 1f;
+            float normalizedSteeringInput = Mathf.InverseLerp(-70,70f, steeringWheelRotation) * 2f - 1f;
             float steeringInput = Mathf.Clamp(normalizedSteeringInput, -1f, 1f);
 
 
