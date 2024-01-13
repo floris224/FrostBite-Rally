@@ -26,7 +26,14 @@ public class CheckPoints : MonoBehaviour
     }
     private void Update()
     {
-        
+        if (checkpointsNeeded.Count == 0)
+        {
+            panelWin.SetActive(true);
+            fiishTime = timer.currentTime;
+            //lapped all checkpoints
+            finish.text = $": {fiishTime:F2} seconds";
+
+        }
 
     }
 
@@ -54,14 +61,7 @@ public class CheckPoints : MonoBehaviour
                     slowerTimer.enabled = false;
                     firstRun = false;
                     Saveoad.checkPointIdex++;
-                    if (checkpointsNeeded.Count == 0)
-                    {
-                        panelWin.SetActive(true);
-                        fiishTime = timer.currentTime;
-                        //lapped all checkpoints
-                        finish.text = $": {fiishTime:F4} seconds";
-
-                    }
+                    
                 }
 
                 else
@@ -72,6 +72,7 @@ public class CheckPoints : MonoBehaviour
                     recordTimer.enabled = false;
 
                 }
+                
             }
         }
 
@@ -88,7 +89,7 @@ public class CheckPoints : MonoBehaviour
         float recordTimer = checkPointRecord;
         float currentCheckPointTime = timer.currentTime;
         float timeDiffrence =  currentCheckPointTime - recordTimer;
-        slowerTimer.text = $"Slower: {timeDiffrence:F4} seconds";
+        slowerTimer.text = $"Slower: {timeDiffrence:F2} seconds";
         slowerTimer.enabled = true;
     }
 
