@@ -18,7 +18,7 @@ public class CheckPoints : MonoBehaviour
     public float checkPointRecord;
     public float fiishTime;
     public bool firstRun = true;
-    public List<int> checkpointsNeeded; 
+    
     private void Start()
     {
            
@@ -26,7 +26,7 @@ public class CheckPoints : MonoBehaviour
     }
     private void Update()
     {
-        if (checkpointsNeeded.Count == 0)
+        if (Saveoad.checkpointsNeeded.Count == 0)
         {
             panelWin.SetActive(true);
             fiishTime = timer.currentTime;
@@ -43,9 +43,9 @@ public class CheckPoints : MonoBehaviour
         {
             checkPointTime = timer.currentTime;
 
-            if (checkpointsNeeded.Contains(checkPointIndex))
+            if (Saveoad.checkpointsNeeded.Contains(checkPointIndex))
             {
-                checkpointsNeeded.Remove(checkPointIndex);
+                Saveoad.checkpointsNeeded.Remove(checkPointIndex);
                 if (checkPointTime < checkPointRecord || firstRun)
                 {
                     // ui als ui sneller is

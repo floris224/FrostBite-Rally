@@ -15,9 +15,14 @@ public class Saveoad : MonoBehaviour
     public float[] loadTime;
 
     private int currentPlayerIndex;
-   
-
+    public List<int> checkpointsNeeded;
+    public Timer timer;
     // Start is called before the first frame update
+    private void Update()
+    {
+        
+
+    }
     void Start()
     {
         DontDestroyOnLoad(gameObject);

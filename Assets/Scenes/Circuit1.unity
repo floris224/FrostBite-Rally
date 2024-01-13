@@ -219,6 +219,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
         type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 665753379}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
       propertyPath: checkPoints.Array.size
       value: 13
       objectReference: {fileID: 0}
@@ -352,6 +357,71 @@ PrefabInstance:
       propertyPath: checkPoints.Array.data[25]
       value: 
       objectReference: {fileID: 1509792871}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[5]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[6]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[7]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[8]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[9]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[10]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[11]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkpointsNeeded.Array.data[12]
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1835300274340748990, guid: 8531619f40a3dde448eb2aa2dba51c5f,
         type: 3}
       propertyPath: m_LocalPosition.x
