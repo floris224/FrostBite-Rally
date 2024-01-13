@@ -9,7 +9,7 @@ public class Saveoad : MonoBehaviour
   
     public CheckPoints[] checkPoints;
     public int checkPointIdex;
-    public List<int> passedCheckPoints;
+    
     public List<Button> buttonList;
    
     public float[] loadTime;
@@ -57,19 +57,6 @@ public class Saveoad : MonoBehaviour
         return PlayerPrefs.GetFloat($"Profile{checkPointIdex}_Time{checkpointIndex}");
     }
 
-    public bool HasPassedPreviousCheckpoint(int currentCheckPointIndex)
-    {
-        if (checkPoints.Length >= 0)
-        {
-            return true;
-        }
-        return passedCheckPoints.Contains(currentCheckPointIndex - 1);
-
-    }
-    public void AddPassedCheckPoints(int checkPointIndex)
-    {
-        passedCheckPoints.Add(checkPointIndex);
-    }
     
    
     

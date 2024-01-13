@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
+
 
 public class SteeringInput : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class SteeringInput : MonoBehaviour
     private void Update()
     {
        
-       //steeringWheel.transform.position = car.transform.position;
+       
         
         
     }
@@ -32,7 +32,7 @@ public class SteeringInput : MonoBehaviour
         if (inputGiver.leftHandOnWheelReadyToLetGo == true || inputGiver.rightHandOnWheelReadyToLetGo == true)
         {
             InputSteering();
-            // InputSteering();
+           
 
         }
 
