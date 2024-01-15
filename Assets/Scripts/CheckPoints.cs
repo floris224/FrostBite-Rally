@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CheckPoints : MonoBehaviour
 {
+    #region variables
+
     public int checkPointIndex;
     public Timer timer;
     //public SafeLoad safeLoad;
@@ -20,7 +22,9 @@ public class CheckPoints : MonoBehaviour
     public bool firstRun = true;
     public bool hasFinished = false;
     public bool fired  = false;
-    
+
+    #endregion
+
     private void Start()
     {
            

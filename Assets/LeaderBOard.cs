@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class LeaderBOard : MonoBehaviour
 {
     public Saveoad saveLoad;
-    
     public List<TMP_Text> time;
 
 

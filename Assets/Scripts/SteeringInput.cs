@@ -6,26 +6,15 @@ using UnityEngine;
 
 public class SteeringInput : MonoBehaviour
 {
+    #region variable
     public Transform handL;
     public Transform handR;
     public SteeringWheelController inputGiver;
     public GameObject car;
     public GameObject steeringWheel;
     public float bothHandRot;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-       
-       
-        
-        
-    }
-   
+    #endregion
+  
     void LateUpdate()
     {
        
