@@ -18,6 +18,8 @@ public class CheckPoints : MonoBehaviour
     public float checkPointRecord;
     public float fiishTime;
     public bool firstRun = true;
+    public bool hasFinished = false;
+    public bool fired  = false;
     
     private void Start()
     {
@@ -29,14 +31,22 @@ public class CheckPoints : MonoBehaviour
         if (Saveoad.checkpointsNeeded.Count == 0)
         {
             panelWin.SetActive(true);
-            fiishTime = timer.currentTime;
+            hasFinished = true;
+            HasFinishedCeck();
             //lapped all checkpoints
             finish.text = $": {fiishTime:F2} seconds";
 
         }
 
     }
-
+    public void HasFinishedCeck()
+    {
+        if (hasFinished == true && fired == false)
+        {
+            fiishTime = timer.currentTime;
+            fired = true;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Car"))
