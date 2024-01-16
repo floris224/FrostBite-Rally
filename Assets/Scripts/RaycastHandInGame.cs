@@ -8,13 +8,14 @@ public class RaycastHandInGame : MonoBehaviour
 {
     public GameObject keyboardPanel;
     public GameObject leaderBoardPanel;
-    public TMP_InputField inputField;
-    public TMP_InputField inputfieldLeaderBOard;
+    public TMP_Text inputField;
+    public TMP_Text inputfieldLeaderBOard;
     public LayerMask keyBoardLayer;
     public LayerMask nameInputField;
     public LayerMask submit;
     public RaycastHit hit;
     public float rayLenght;
+    public bool isPressed;
     private LineRenderer lineRenderer;
     private void Start()
     {
@@ -40,12 +41,12 @@ public class RaycastHandInGame : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(ray, out hit, rayLenght, submit))
         {
-            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
+            if (OVRInput.GetUp(OVRInput.Button.One, OVRInput.Controller.LTouch))
             {
-                Button button = GetComponent<Button>();
+                Button button = hit.collider.GetComponent<Button>();
                 if(button != null)
                 {
-                    button.onClick.Invoke();
+                    //button.onClick.Invoke();
                 }
             }
             
@@ -65,18 +66,19 @@ public class RaycastHandInGame : MonoBehaviour
         {
             if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
             {
+                
                 KeyPress pressedKey = hit.collider.GetComponent<KeyPress>();
-                if (pressedKey != null)
+                if (pressedKey != null && !isPressed)
                 {
                     char characther = pressedKey.characther;
-                    if (characther == '\b') // backspace
+                    if (characther == '1') // backspace
                     {
                         if (inputField.text.Length > 0)
                         {
                             inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
                         }
                     }
-                    else if (characther == '\n')// enter
+                    else if (characther == '2')// enter
                     {
                         keyboardPanel.SetActive(false);
                         leaderBoardPanel.SetActive(true);
@@ -84,10 +86,15 @@ public class RaycastHandInGame : MonoBehaviour
                     }
                     else
                     {
+                        
                         inputField.text += pressedKey.characther;
                     }
-
+                    isPressed = true;
                 }
+            }
+            else
+            {
+                isPressed = false;
             }
            
             

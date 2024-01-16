@@ -39,7 +39,6 @@ public class CheckPoints : MonoBehaviour
             hasFinished = true;
             HasFinishedCeck();
             //lapped all checkpoints
-            finish.text = $": {fiishTime:F2} seconds";
             inGameRaycast.enabled = true;
 
         }
@@ -50,6 +49,9 @@ public class CheckPoints : MonoBehaviour
         if (hasFinished == true && fired == false)
         {
             fiishTime = timer.currentTime;
+            int minutes = Mathf.FloorToInt(fiishTime / 60);
+            int seconds = Mathf.FloorToInt(fiishTime % 60);
+            finish.text = string.Format("{00:00}:{1:00}", minutes, seconds);
             fired = true;
         }
     }
