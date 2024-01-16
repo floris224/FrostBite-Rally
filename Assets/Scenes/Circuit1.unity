@@ -15695,7 +15695,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478927435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19754,6 +19754,8 @@ MonoBehaviour:
   - {fileID: 609247116}
   - {fileID: 1511590050}
   - {fileID: 173776038}
+  username: {fileID: 1594728765}
+  checkpoints: {fileID: 1509792871}
 --- !u!4 &1722247122
 Transform:
   m_ObjectHideFlags: 0

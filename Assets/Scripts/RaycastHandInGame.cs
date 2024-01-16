@@ -46,7 +46,7 @@ public class RaycastHandInGame : MonoBehaviour
                 Button button = hit.collider.GetComponent<Button>();
                 if(button != null)
                 {
-                    //button.onClick.Invoke();
+                    button.onClick.Invoke();
                 }
             }
             
