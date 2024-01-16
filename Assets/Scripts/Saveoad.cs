@@ -16,6 +16,7 @@ public class Saveoad : MonoBehaviour
 
     private int currentPlayerIndex;
     public List<int> checkpointsNeeded;
+    public List<int> checkPointsPassed;
     public Timer timer;
     // Start is called before the first frame update
     private void Update()
@@ -61,10 +62,7 @@ public class Saveoad : MonoBehaviour
     {
         return PlayerPrefs.GetFloat($"Profile{checkPointIdex}_Time{checkpointIndex}");
     }
-    public void GetTotalTime()
-    {
-
-    }
+   
 
     
    

@@ -23,7 +23,7 @@ public class CheckPoints : MonoBehaviour
     public bool firstRun = true;
     public bool hasFinished = false;
     public bool fired  = false;
-
+    public CarMovement carMovement;
     #endregion
 
     private void Start()
@@ -40,6 +40,7 @@ public class CheckPoints : MonoBehaviour
             HasFinishedCeck();
             //lapped all checkpoints
             inGameRaycast.enabled = true;
+            carMovement.enabled = false;
 
         }
 
@@ -61,9 +62,10 @@ public class CheckPoints : MonoBehaviour
         {
             checkPointTime = timer.currentTime;
 
-            if (Saveoad.checkpointsNeeded.Contains(checkPointIndex))
+            if (Saveoad.checkPointsPassed.Contains(checkPointIndex -1) || Saveoad.checkPointIdex == 0)
             {
                 Saveoad.checkpointsNeeded.Remove(checkPointIndex);
+                Saveoad.checkPointsPassed.Add(checkPointIndex);
                 if (checkPointTime < checkPointRecord || firstRun)
                 {
                     // ui als ui sneller is
