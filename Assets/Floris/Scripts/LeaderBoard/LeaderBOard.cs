@@ -44,5 +44,7 @@ public class LeaderBOard : MonoBehaviour
     {
         string playerName = username.text;
         float finishTime = checkpoints.fiishTime;
+        SetLeaderBoardEntry(playerName, finishTime);
+
     }
 }
