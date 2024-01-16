@@ -8,6 +8,7 @@ public class CheckPoints : MonoBehaviour
 {
     #region variables
 
+    public RaycastHandInGame inGameRaycast;
     public int checkPointIndex;
     public Timer timer;
     //public SafeLoad safeLoad;
@@ -39,6 +40,7 @@ public class CheckPoints : MonoBehaviour
             HasFinishedCeck();
             //lapped all checkpoints
             finish.text = $": {fiishTime:F2} seconds";
+            inGameRaycast.enabled = true;
 
         }
 
@@ -107,6 +109,7 @@ public class CheckPoints : MonoBehaviour
         slowerTimer.enabled = true;
     }
 
+    
   
 }
 

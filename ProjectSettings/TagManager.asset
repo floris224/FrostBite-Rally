@@ -24,16 +24,16 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - VirtualKeyBoard
   - Water
   - UI
   - groundLayer
   - Snow
-  - 
+  - InputName
   - HiddenMesh
   - Character
   - MirroredCharacter
-  - 
+  - Submit
   - 
   - 
   - 

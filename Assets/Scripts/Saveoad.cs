@@ -61,6 +61,10 @@ public class Saveoad : MonoBehaviour
     {
         return PlayerPrefs.GetFloat($"Profile{checkPointIdex}_Time{checkpointIndex}");
     }
+    public void GetTotalTime()
+    {
+
+    }
 
     
    
