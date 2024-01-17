@@ -128,7 +128,7 @@ namespace Dan.Main
         /// <param name="score">The highscore of the player</param>
         /// <param name="callback">Returns true if the request was successful.</param>
         /// <param name="errorCallback">Returns an error message if the request failed.</param>
-        public static void UploadNewEntry(string publicKey, string username, float score, Action<bool> callback = null, Action<string> errorCallback = null) => 
+        public static void UploadNewEntry(string publicKey, string username, int score, Action<bool> callback = null, Action<string> errorCallback = null) => 
             UploadNewEntry(publicKey, username, score, " ", callback, errorCallback);
 
         /// <summary>

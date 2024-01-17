@@ -8,9 +8,10 @@ using Dan.Models;
 
 public class LeaderBOard : MonoBehaviour
 {
-    public Button buttonSwitchSaveHighScore;
+    public GameObject buttonSwitchSaveHighScore;
     public List<TextMeshProUGUI> name;
     public List<TextMeshProUGUI> scores;
+    
     public TMP_Text username;
     public CheckPoints checkpoints;
     public Saveoad saveLoad;
@@ -28,7 +29,7 @@ public class LeaderBOard : MonoBehaviour
         // tijdelijk heb geen VR
         if (Input.GetKey(KeyCode.B))
         {
-           
+            ButtonPressed();
         }
     }
     public void GetLeaderBoard()
@@ -39,16 +40,17 @@ public class LeaderBOard : MonoBehaviour
             for (int i = 0; i < loopLengt; i++)
             {
                 name[i].text = msg[i].Username;
-                scores[i].text = FloatToInt(msg[i].Score);
+               
+                scores[i].text = msg[i].Extra;
 
             }
         }));
     }
 
-    public void SetLeaderBoardEntry(string username, float finishTime)
+    public void SetLeaderBoardEntry(string username, int score,string finishTime)
     {
         
-        LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, username, finishTime, ((msg) =>
+        LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, username, score,finishTime, ((msg) =>
         {
             GetLeaderBoard();
         }));
@@ -58,16 +60,17 @@ public class LeaderBOard : MonoBehaviour
     {
 
         string playerName = username.text;
-        float finishTime = checkpoints.fiishTime;
-        if (finishTime < saveLoad.bestTime)
-        {
-            buttonSwitchSaveHighScore.enabled = true;
-            SetLeaderBoardEntry(playerName, finishTime);
-        }
+        string finishTime = FloatToString(checkpoints.fiishTime);
+        int finishTimeScore = (int)checkpoints.fiishTime;
+        
+        Debug.Log("SAved");
+        buttonSwitchSaveHighScore.SetActive(true);
+        SetLeaderBoardEntry(playerName,finishTimeScore, finishTime);
+        
         
 
     }
-    public string FloatToInt(float time)
+    public string FloatToString(float time)
     {
         int minutes = Mathf.FloorToInt(checkpoints.fiishTime / 60);
         int seconds = Mathf.FloorToInt(checkpoints.fiishTime % 60);

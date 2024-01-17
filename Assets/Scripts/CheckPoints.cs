@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class CheckPoints : MonoBehaviour
 {
     #region variables
-
+    public List<CheckPoints> checkPointsListForFirstRun;
     public RaycastHandInGame inGameRaycast;
     public int checkPointIndex;
     public Timer timer;
@@ -87,7 +87,7 @@ public class CheckPoints : MonoBehaviour
                 {
                     // ui als ui sneller is
                     float timeDifferenceFaster = checkPointRecord - checkPointTime;
-                    recordTimer.text = $" - {timeDifferenceFaster:F2}";
+                    recordTimer.text = $" -{timeDifferenceFaster:F2}";
                     checkPointRecord = checkPointTime;
 
 
@@ -127,7 +127,7 @@ public class CheckPoints : MonoBehaviour
         float recordTimer = checkPointRecord;
         float currentCheckPointTime = timer.currentTime;
         float timeDiffrence =  currentCheckPointTime - recordTimer;
-        slowerTimer.text = $"+ : {timeDiffrence:F2}";
+        slowerTimer.text = $"+{timeDiffrence:F2}";
         slowerTimer.enabled = true;
     }
 

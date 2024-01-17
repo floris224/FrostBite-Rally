@@ -91,7 +91,7 @@ public class SteeringWheelController : MonoBehaviour
     {
         //Checks if hands are in the collider of the steeringwheel
         
-        if (other.CompareTag("PlayerHand"))
+        if (other.CompareTag("PlayerHandR"))
         {
            
             if (rightHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
@@ -101,10 +101,14 @@ public class SteeringWheelController : MonoBehaviour
                 rightHandOnWheel = true;
             }
 
-            if(leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
+           
+        }
+        if (other.CompareTag("PlayerHandL"))
+        {
+            if (leftHandOnWheel == false && OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
             {
                 handrotationFix.enabled = true;
-                PlaceHandOnWheel(ref leftHand,ref leftHandOriginalParent, ref leftHandOnWheel);
+                PlaceHandOnWheel(ref leftHand, ref leftHandOriginalParent, ref leftHandOnWheel);
                 leftHandOnWheel = true;
             }
         }
