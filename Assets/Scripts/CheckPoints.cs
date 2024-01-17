@@ -24,6 +24,9 @@ public class CheckPoints : MonoBehaviour
     public bool hasFinished = false;
     public bool fired  = false;
     public CarMovement carMovement;
+    public int minutes;
+    public int seconds;
+    public int miliSeconds;
     #endregion
 
     private void Start()
@@ -33,6 +36,9 @@ public class CheckPoints : MonoBehaviour
     }
     private void Update()
     {
+       
+       
+      
         if (Saveoad.checkpointsNeeded.Count == 0)
         {
             panelWin.SetActive(true);
@@ -49,10 +55,13 @@ public class CheckPoints : MonoBehaviour
     {
         if (hasFinished == true && fired == false)
         {
+            // gebruik % om overgebleven float te pakken
             fiishTime = timer.currentTime;
-            int minutes = Mathf.FloorToInt(fiishTime / 60);
-            int seconds = Mathf.FloorToInt(fiishTime % 60);
-            finish.text = string.Format("{00:00}:{1:00}", minutes, seconds);
+            minutes = Mathf.FloorToInt(fiishTime / 60);
+            seconds = Mathf.FloorToInt(fiishTime % 60);
+            miliSeconds = Mathf.FloorToInt(fiishTime * 1000);
+            miliSeconds = miliSeconds % 1000;
+            finish.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, miliSeconds);
             fired = true;
         }
     }
@@ -62,7 +71,7 @@ public class CheckPoints : MonoBehaviour
         {
             checkPointTime = timer.currentTime;
 
-            if (Saveoad.checkPointsPassed.Contains(checkPointIndex -1) || Saveoad.checkPointIdex == 0)
+            if (Saveoad.checkPointsPassed.Contains(checkPointIndex - 1) || Saveoad.checkpointsNeeded[0] == checkPointIndex)
             {
                 Saveoad.checkpointsNeeded.Remove(checkPointIndex);
                 Saveoad.checkPointsPassed.Add(checkPointIndex);
@@ -72,8 +81,8 @@ public class CheckPoints : MonoBehaviour
                     checkPointRecord = checkPointTime;
 
 
-                    
-                    recordTimer.text = timer.currentTime + "New Record";
+                    float timeDifferenceFaster = checkPointRecord - checkPointTime;
+                    recordTimer.text =$" - {timeDifferenceFaster:F2}";
                     Saveoad.SaveData();
 
 
@@ -109,7 +118,7 @@ public class CheckPoints : MonoBehaviour
         float recordTimer = checkPointRecord;
         float currentCheckPointTime = timer.currentTime;
         float timeDiffrence =  currentCheckPointTime - recordTimer;
-        slowerTimer.text = $"Slower: {timeDiffrence:F2} seconds";
+        slowerTimer.text = $"+ : {timeDiffrence:F2}";
         slowerTimer.enabled = true;
     }
 

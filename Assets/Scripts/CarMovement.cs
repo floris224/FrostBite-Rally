@@ -162,7 +162,7 @@ public class CarMovement : MonoBehaviour
              steeringWheelRotation -= 360f;
             }
         // steeringWheelRotation = Mathf.Repeat(steeringWheelRotation, 360f);
-        float minSteeringAngle = -70f;
+            float minSteeringAngle = -70f;
             float maxSteeringAngle = 70f;
             steeringWheelRotation = Mathf.Clamp(steeringWheelRotation, minSteeringAngle, maxSteeringAngle);
 

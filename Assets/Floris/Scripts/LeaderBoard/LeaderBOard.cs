@@ -27,13 +27,14 @@ public class LeaderBOard : MonoBehaviour
             {
                 name[i].text = msg[i].Username;
                 scores[i].text = msg[i].Score.ToString();
+
             }
         }));
     }
 
     public void SetLeaderBoardEntry(string username, float finishTime)
     {
-        int score = Mathf.FloorToInt(finishTime/60) * 100 + Mathf.FloorToInt(finishTime % 60);
+        
         LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, username, score, ((msg) =>
         {
             GetLeaderBoard();
@@ -44,7 +45,15 @@ public class LeaderBOard : MonoBehaviour
     {
         string playerName = username.text;
         float finishTime = checkpoints.fiishTime;
+        
         SetLeaderBoardEntry(playerName, finishTime);
 
+    }
+    public void FloatToInt()
+    {
+        checkpoints.minutes = Mathf.FloorToInt(checkpoints.fiishTime / 60);
+        checkpoints.seconds = Mathf.FloorToInt(checkpoints.fiishTime % 60);
+        checkpoints.miliSeconds = Mathf.FloorToInt(checkpoints.fiishTime * 1000);
+        checkpoints.miliSeconds = checkpoints.miliSeconds % 1000;
     }
 }
