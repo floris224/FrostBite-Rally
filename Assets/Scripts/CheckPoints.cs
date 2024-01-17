@@ -27,6 +27,7 @@ public class CheckPoints : MonoBehaviour
     public int minutes;
     public int seconds;
     public int miliSeconds;
+   
     #endregion
 
     private void Start()
@@ -37,12 +38,7 @@ public class CheckPoints : MonoBehaviour
     private void Update()
     {
 
-        fiishTime = timer.currentTime;
-        minutes = Mathf.FloorToInt(fiishTime / 60);
-        seconds = Mathf.FloorToInt(fiishTime % 60);
-        miliSeconds = Mathf.FloorToInt(fiishTime * 1000);
-        miliSeconds = miliSeconds % 1000;
-        finish.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, miliSeconds);
+       
 
         if (Saveoad.checkpointsNeeded.Count == 0)
         {
@@ -52,7 +48,7 @@ public class CheckPoints : MonoBehaviour
             //lapped all checkpoints
             inGameRaycast.enabled = true;
             carMovement.enabled = false;
-
+          
         }
 
     }
@@ -61,7 +57,13 @@ public class CheckPoints : MonoBehaviour
         if (hasFinished == true && fired == false)
         {
             // gebruik % om overgebleven float te pakken
+
             fiishTime = timer.currentTime;
+            if (fiishTime < Saveoad.bestTime)
+            {
+                Debug.Log("Omdraaien");
+                Saveoad.SaveDataBestTime();
+            }
             minutes = Mathf.FloorToInt(fiishTime / 60);
             seconds = Mathf.FloorToInt(fiishTime % 60);
             miliSeconds = Mathf.FloorToInt(fiishTime * 1000);
@@ -80,7 +82,7 @@ public class CheckPoints : MonoBehaviour
             {
                 Saveoad.checkpointsNeeded.Remove(checkPointIndex);
                 Saveoad.checkPointsPassed.Add(checkPointIndex);
-                if (checkPointTime < checkPointRecord || firstRun)
+                if (checkPointTime < checkPointRecord || firstRun == true)
                 {
                     // ui als ui sneller is
                     checkPointRecord = checkPointTime;
@@ -88,7 +90,7 @@ public class CheckPoints : MonoBehaviour
 
                     float timeDifferenceFaster = checkPointRecord - checkPointTime;
                     recordTimer.text =$" - {timeDifferenceFaster:F2}";
-                    Saveoad.SaveData();
+                    Saveoad.SaveDataCheckPoints();
 
 
                     recordTimer.enabled = true;

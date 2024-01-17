@@ -381,6 +381,16 @@ PrefabInstance:
       objectReference: {fileID: 665753379}
     - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
         type: 3}
+      propertyPath: bestTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
+      propertyPath: checkPointsScript
+      value: 
+      objectReference: {fileID: 1509792871}
+    - target: {fileID: 769685170494698320, guid: 8531619f40a3dde448eb2aa2dba51c5f,
+        type: 3}
       propertyPath: checkPoints.Array.size
       value: 13
       objectReference: {fileID: 0}
@@ -968,6 +978,16 @@ PrefabInstance:
       propertyPath: panelWin
       value: 
       objectReference: {fileID: 1307933079}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
       propertyPath: recordTimer
@@ -3715,6 +3735,16 @@ PrefabInstance:
       objectReference: {fileID: 1307933079}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
       propertyPath: recordTimer
       value: 
       objectReference: {fileID: 2085402568}
@@ -4782,6 +4812,16 @@ PrefabInstance:
       objectReference: {fileID: 1307933079}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
       propertyPath: recordTimer
       value: 
       objectReference: {fileID: 2085402568}
@@ -5161,6 +5201,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532810731}
   m_Mesh: {fileID: 1712276278706627001, guid: 149e6c1676af7f547bc1dc0884b97758, type: 3}
+--- !u!114 &555570113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3333507828409726894, guid: 6259512e69cbd214882ebb497c9c27fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1601539912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef351a87ef295604695d1b48e92150ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &562041590
 GameObject:
   m_ObjectHideFlags: 0
@@ -10716,6 +10768,16 @@ PrefabInstance:
       objectReference: {fileID: 1307933079}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
       propertyPath: recordTimer
       value: 
       objectReference: {fileID: 2085402568}
@@ -12753,7 +12815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1095575036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13450,6 +13512,16 @@ PrefabInstance:
       propertyPath: panelWin
       value: 
       objectReference: {fileID: 1307933079}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
       propertyPath: recordTimer
@@ -15757,6 +15829,16 @@ PrefabInstance:
       objectReference: {fileID: 1307933079}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
       propertyPath: recordTimer
       value: 
       objectReference: {fileID: 2085402568}
@@ -16436,6 +16518,16 @@ PrefabInstance:
       propertyPath: panelWin
       value: 
       objectReference: {fileID: 1307933079}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
       propertyPath: recordTimer
@@ -17548,6 +17640,16 @@ PrefabInstance:
       propertyPath: panelWin
       value: 
       objectReference: {fileID: 1307933079}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
       propertyPath: recordTimer
@@ -19535,6 +19637,16 @@ PrefabInstance:
       objectReference: {fileID: 1307933079}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
       propertyPath: recordTimer
       value: 
       objectReference: {fileID: 2085402568}
@@ -19740,6 +19852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196675b5dd9b56c43a9f3323fa3af83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonSwitchSaveHighScore: {fileID: 1813215300}
   name:
   - {fileID: 99580676}
   - {fileID: 371775322}
@@ -19756,6 +19869,7 @@ MonoBehaviour:
   - {fileID: 173776038}
   username: {fileID: 1594728765}
   checkpoints: {fileID: 1509792871}
+  saveLoad: {fileID: 21287962}
 --- !u!4 &1722247122
 Transform:
   m_ObjectHideFlags: 0
@@ -20328,6 +20442,16 @@ PrefabInstance:
       propertyPath: panelWin
       value: 
       objectReference: {fileID: 1307933079}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
       propertyPath: recordTimer
@@ -21443,6 +21567,16 @@ PrefabInstance:
       objectReference: {fileID: 1307933079}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
       propertyPath: recordTimer
       value: 
       objectReference: {fileID: 2085402568}
@@ -22397,6 +22531,16 @@ PrefabInstance:
       propertyPath: panelWin
       value: 
       objectReference: {fileID: 1307933079}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
       propertyPath: recordTimer
@@ -23818,6 +23962,16 @@ PrefabInstance:
       propertyPath: panelWin
       value: 
       objectReference: {fileID: 1307933079}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: carMovement
+      value: 
+      objectReference: {fileID: 555570113}
+    - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
+        type: 3}
+      propertyPath: hasFinished
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 551024841680790199, guid: b9fe7427ee11e1246a0dee3a3460aa94,
         type: 3}
       propertyPath: recordTimer

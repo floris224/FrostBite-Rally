@@ -4,24 +4,28 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Dan.Main;
+using Dan.Models;
 
 public class LeaderBOard : MonoBehaviour
 {
-   
+    public Button buttonSwitchSaveHighScore;
     public List<TextMeshProUGUI> name;
     public List<TextMeshProUGUI> scores;
     public TMP_Text username;
     public CheckPoints checkpoints;
+    public Saveoad saveLoad;
     private string publicLeaderBoardKey = 
     "b4fa2ac64019ba32716a56b29e6dd19567c9754b76522bb15898f530e2f29bbf";
+
     public void Start()
     {
         GetLeaderBoard();
-        ButtonPressed();
+       
     }
 
     private void Update()
     {
+        // tijdelijk heb geen VR
         if (Input.GetKey(KeyCode.B))
         {
            
@@ -49,13 +53,18 @@ public class LeaderBOard : MonoBehaviour
             GetLeaderBoard();
         }));
     }
-    
+
     public void ButtonPressed()
     {
+
         string playerName = username.text;
         float finishTime = checkpoints.fiishTime;
+        if (finishTime < saveLoad.bestTime)
+        {
+            buttonSwitchSaveHighScore.enabled = true;
+            SetLeaderBoardEntry(playerName, finishTime);
+        }
         
-        SetLeaderBoardEntry(playerName, finishTime);
 
     }
     public string FloatToInt(float time)
