@@ -69,6 +69,10 @@ public class Saveoad : MonoBehaviour
                 checkPoints[i].checkPointRecord = loadTime[i];
 
             }
+            else
+            {
+                checkPoints[i].checkPointRecord = float.MaxValue;
+            }
             
         }
         if (PlayerPrefs.HasKey("BestTime"))

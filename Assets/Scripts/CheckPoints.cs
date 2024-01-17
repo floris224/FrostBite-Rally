@@ -76,20 +76,22 @@ public class CheckPoints : MonoBehaviour
     {
         if (other.CompareTag("Car"))
         {
-            checkPointTime = timer.currentTime;
+           
 
             if (Saveoad.checkPointsPassed.Contains(checkPointIndex - 1) || Saveoad.checkpointsNeeded[0] == checkPointIndex)
             {
+                checkPointTime = timer.currentTime;
                 Saveoad.checkpointsNeeded.Remove(checkPointIndex);
                 Saveoad.checkPointsPassed.Add(checkPointIndex);
                 if (checkPointTime < checkPointRecord || firstRun == true)
                 {
                     // ui als ui sneller is
+                    float timeDifferenceFaster = checkPointRecord - checkPointTime;
+                    recordTimer.text = $" - {timeDifferenceFaster:F2}";
                     checkPointRecord = checkPointTime;
 
 
-                    float timeDifferenceFaster = checkPointRecord - checkPointTime;
-                    recordTimer.text =$" - {timeDifferenceFaster:F2}";
+                    
                     Saveoad.SaveDataCheckPoints();
 
 
