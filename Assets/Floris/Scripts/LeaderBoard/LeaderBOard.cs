@@ -17,6 +17,15 @@ public class LeaderBOard : MonoBehaviour
     public void Start()
     {
         GetLeaderBoard();
+        ButtonPressed();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.B))
+        {
+           
+        }
     }
     public void GetLeaderBoard()
     {
@@ -26,7 +35,7 @@ public class LeaderBOard : MonoBehaviour
             for (int i = 0; i < loopLengt; i++)
             {
                 name[i].text = msg[i].Username;
-                scores[i].text = msg[i].Score.ToString();
+                scores[i].text = FloatToInt(msg[i].Score);
 
             }
         }));
@@ -35,7 +44,7 @@ public class LeaderBOard : MonoBehaviour
     public void SetLeaderBoardEntry(string username, float finishTime)
     {
         
-        LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, username, score, ((msg) =>
+        LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, username, finishTime, ((msg) =>
         {
             GetLeaderBoard();
         }));
@@ -49,11 +58,12 @@ public class LeaderBOard : MonoBehaviour
         SetLeaderBoardEntry(playerName, finishTime);
 
     }
-    public void FloatToInt()
+    public string FloatToInt(float time)
     {
-        checkpoints.minutes = Mathf.FloorToInt(checkpoints.fiishTime / 60);
-        checkpoints.seconds = Mathf.FloorToInt(checkpoints.fiishTime % 60);
-        checkpoints.miliSeconds = Mathf.FloorToInt(checkpoints.fiishTime * 1000);
-        checkpoints.miliSeconds = checkpoints.miliSeconds % 1000;
+        int minutes = Mathf.FloorToInt(checkpoints.fiishTime / 60);
+        int seconds = Mathf.FloorToInt(checkpoints.fiishTime % 60);
+        int miliSeconds = Mathf.FloorToInt(checkpoints.fiishTime * 1000);
+        miliSeconds = checkpoints.miliSeconds % 1000;
+        return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, miliSeconds);
     }
 }

@@ -36,9 +36,14 @@ public class CheckPoints : MonoBehaviour
     }
     private void Update()
     {
-       
-       
-      
+
+        fiishTime = timer.currentTime;
+        minutes = Mathf.FloorToInt(fiishTime / 60);
+        seconds = Mathf.FloorToInt(fiishTime % 60);
+        miliSeconds = Mathf.FloorToInt(fiishTime * 1000);
+        miliSeconds = miliSeconds % 1000;
+        finish.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, miliSeconds);
+
         if (Saveoad.checkpointsNeeded.Count == 0)
         {
             panelWin.SetActive(true);
