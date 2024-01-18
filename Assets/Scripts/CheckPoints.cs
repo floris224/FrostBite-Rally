@@ -27,7 +27,9 @@ public class CheckPoints : MonoBehaviour
     public int minutes;
     public int seconds;
     public int miliSeconds;
-   
+    public AudioSource notificationGoinThroughCheckpoint;
+    public AudioClip notificationSound;
+    public AudioClip fireWorks;
     #endregion
 
     private void Start()
@@ -43,6 +45,7 @@ public class CheckPoints : MonoBehaviour
         if (Saveoad.checkpointsNeeded.Count == 0)
         {
             panelWin.SetActive(true);
+            notificationGoinThroughCheckpoint.PlayOneShot(fireWorks);
             hasFinished = true;
             HasFinishedCeck();
             //lapped all checkpoints
@@ -80,6 +83,7 @@ public class CheckPoints : MonoBehaviour
 
             if (Saveoad.checkPointsPassed.Contains(checkPointIndex - 1) || Saveoad.checkpointsNeeded[0] == checkPointIndex)
             {
+                notificationGoinThroughCheckpoint.PlayOneShot(notificationSound);
                 checkPointTime = timer.currentTime;
                 Saveoad.checkpointsNeeded.Remove(checkPointIndex);
                 Saveoad.checkPointsPassed.Add(checkPointIndex);

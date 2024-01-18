@@ -79,10 +79,11 @@ public class SteeringWheelController : MonoBehaviour
             rightHandOnWheelReadyToLetGo = true;
             
         }
-        if(leftHandOnWheel && rightHandOnWheel || leftHandOnWheel || rightHandOnWheel)
+        /*if(leftHandOnWheel && rightHandOnWheel || leftHandOnWheel || rightHandOnWheel)
         {
             timer.enabled = true;
         }
+        */
         ReleaseHand();
        
     }
