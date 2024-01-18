@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AudioChangerDriveNoDrive : MonoBehaviour
 {
-    public List<AudioClip> audioclipsDriveandStandStill;
+    
     public AudioSource audioSourceDriveAndStill;
+    public AudioSource audiosourceDrive;
     public CarMovement carController;
-
+    public OnTriggerEnerStartCar startCar;
 
     // Start is called before the first frame update
   
@@ -15,14 +17,18 @@ public class AudioChangerDriveNoDrive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(carController.gasInput == 0)
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.5f && startCar.isCarStarted == true )
         {
-            audioSourceDriveAndStill.clip = audioclipsDriveandStandStill[0];
-        }
-        else if (carController.gasInput ==1)
-        {
+            audioSourceDriveAndStill.enabled = false;
+            audiosourceDrive.enabled = true;
             
-            audioSourceDriveAndStill.clip = audioclipsDriveandStandStill[1];
+        }
+        
+        else if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) < 0.5f && startCar.isCarStarted == true)
+        {
+
+            audioSourceDriveAndStill.enabled = true;
+            audiosourceDrive.enabled = false;
         }
     }
 }
