@@ -14,6 +14,7 @@ public class StartRaceTimer : MonoBehaviour
     public AudioClip startSounds;
     public AudioSource startSoundAudioSource;
     public bool stopSound = false;
+    public bool readyToDrive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +37,12 @@ public class StartRaceTimer : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        if (timer > 5)
+        if (timer > 4)
         {
             redLicht.SetActive(false);
             greenLicht.SetActive(true);
             timerPlayer.enabled = true;
-            
+            readyToDrive = true;
 
         }   
     }

@@ -119,11 +119,7 @@ public class CheckPoints : MonoBehaviour
         }
 
     }
-        
-    public void ButtonGoHome()
-    {
-        SceneManager.LoadScene(0);
-    }
+    
     
     private void UpdateSlowerTimer()
     {

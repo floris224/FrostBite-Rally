@@ -37,31 +37,9 @@ public class CarMovement : MonoBehaviour
     public AnimationCurve steeringCurve;
     public GameObject downForce;
     public SteeringWheelController controller;
-
+    public StartRaceTimer raceTimer;
     public AudioSource carRideSound;
-    /*
-    private void Awake()
-    {
-
-        //driveInputfw = asset.FindAction("DriveForwards");
-        rotationInput = asset.FindAction("Turn");
-        brakeInputs = asset.FindAction("Brake");
-       
-    }
-    private void OnEnable()
-    {
-        //driveInputfw.Enable();
-        rotationInput.Enable();
-        brakeInputs.Enable();
-    }
-    private void OnDisable()
-    {
-        //driveInputfw.Disable();
-        rotationInput.Disable();
-        brakeInputs.Disable();
-    }
-    */
-    // Start is called before the first frame update
+  
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -70,10 +48,10 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void checkInput()
     {
-        //gasInput = driveInputfw.ReadValue<float>();
+        
         brakeInput = brakeInputs.ReadValue<float>();
         steeringInput = rotationInput.ReadValue<float>();
-        //driftAngle = Vector3.Angle(transform.forward, rb.velocity);
+      
         
         
          
@@ -85,17 +63,21 @@ public class CarMovement : MonoBehaviour
         checkInput();
         if (controller.leftHandOnWheelReadyToLetGo == true || controller.rightHandOnWheelReadyToLetGo == true)
         {
-            if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.5f)
+            if(raceTimer.readyToDrive == true)
             {
-                gasInput = 1;
-                carRideSound.enabled = true;
-                ApplyHorsePowerForwards();
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.5f)
+                {
+                    gasInput = 1;
+                    carRideSound.enabled = true;
+                    ApplyHorsePowerForwards();
+                }
+                else
+                {
+                    carRideSound.enabled = false;
+                    gasInput = 0;
+                }
             }
-            else
-            {
-                carRideSound.enabled=false;
-                gasInput = 0;
-            }
+           
 
             
         }
@@ -123,11 +105,15 @@ public class CarMovement : MonoBehaviour
 
         if (controller.leftHandOnWheelReadyToLetGo == true || controller.rightHandOnWheelReadyToLetGo == true)
         {
-            if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.5f)
+            if(raceTimer.readyToDrive == true)
             {
-                gasInput = -1;
-                ApplyHorsePowerBack();
+                if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.5f)
+                {
+                    gasInput = -1;
+                    ApplyHorsePowerBack();
+                }
             }
+          
         }
 
 
