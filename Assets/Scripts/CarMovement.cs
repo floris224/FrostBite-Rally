@@ -38,7 +38,7 @@ public class CarMovement : MonoBehaviour
     public GameObject downForce;
     public SteeringWheelController controller;
     public StartRaceTimer raceTimer;
-    public AudioSource carRideSound;
+
   
     void Start()
     {
@@ -68,12 +68,12 @@ public class CarMovement : MonoBehaviour
                 if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.5f)
                 {
                     gasInput = 1;
-                    carRideSound.enabled = true;
+                   
                     ApplyHorsePowerForwards();
                 }
                 else
                 {
-                    carRideSound.enabled = false;
+                  
                     gasInput = 0;
                 }
             }
@@ -147,7 +147,7 @@ public class CarMovement : MonoBehaviour
             {
              steeringWheelRotation -= 360f;
             }
-        // steeringWheelRotation = Mathf.Repeat(steeringWheelRotation, 360f);
+        
             float minSteeringAngle = -70f;
             float maxSteeringAngle = 70f;
             steeringWheelRotation = Mathf.Clamp(steeringWheelRotation, minSteeringAngle, maxSteeringAngle);
