@@ -143,7 +143,8 @@ public class CarMovement : MonoBehaviour
         {
              float steeringWheelRotation = steeringWheel.transform.localEulerAngles.z;
 
-            if (steeringWheelRotation > 180f)
+        
+            if (steeringWheelRotation > 230)
             {
              steeringWheelRotation -= 360f;
             }
