@@ -91,17 +91,32 @@ PrefabInstance:
     - target: {fileID: -5780377825138459630, guid: 637aa34b11a614a4bab125ac667b1be4,
         type: 3}
       propertyPath: m_CastShadows
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5780377825138459630, guid: 637aa34b11a614a4bab125ac667b1be4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bc312401b8fd2c84b9c58915dc638802, type: 2}
+    - target: {fileID: -2326719753599368335, guid: 637aa34b11a614a4bab125ac667b1be4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 637aa34b11a614a4bab125ac667b1be4,
         type: 3}
       propertyPath: m_Name
       value: Tree1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 637aa34b11a614a4bab125ac667b1be4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400086564404443856, guid: 637aa34b11a614a4bab125ac667b1be4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -8221809898812911413, guid: 637aa34b11a614a4bab125ac667b1be4, type: 3}
