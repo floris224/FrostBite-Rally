@@ -98,7 +98,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: a890071db48fbc6409948e828c88eaf1,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 8d6acc3548aa34e44bb708b76de3611f,
     type: 2}
 --- !u!196 &4
@@ -8011,6 +8012,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1919394038
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 524.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 95.69718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 239.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980245970891699312, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817706356167386263, guid: 2e73bffcd8fe29147b63739a5adb379e,
+        type: 3}
+      propertyPath: m_Name
+      value: Tree1.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e73bffcd8fe29147b63739a5adb379e, type: 3}
 --- !u!1001 &1926010807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9951,6 +10020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316094144495595473, guid: 6de58cd654cb5884999d70b8f808dfe8,
         type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5316094144495595473, guid: 6de58cd654cb5884999d70b8f808dfe8,
+        type: 3}
       propertyPath: m_DetailObjectDensity
       value: 0
       objectReference: {fileID: 0}
@@ -9967,6 +10041,11 @@ PrefabInstance:
     - target: {fileID: 5316094144495595473, guid: 6de58cd654cb5884999d70b8f808dfe8,
         type: 3}
       propertyPath: m_DetailObjectDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316094144495595473, guid: 6de58cd654cb5884999d70b8f808dfe8,
+        type: 3}
+      propertyPath: m_IgnoreQualitySettings
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5316094144495595473, guid: 6de58cd654cb5884999d70b8f808dfe8,
@@ -9993,6 +10072,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EnableHeightmapRayTracing
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316094144495595473, guid: 6de58cd654cb5884999d70b8f808dfe8,
+        type: 3}
+      propertyPath: m_PreserveTreePrototypeLayers
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6611472098926767742, guid: 6de58cd654cb5884999d70b8f808dfe8,
         type: 3}
@@ -10142,3 +10226,4 @@ SceneRoots:
   - {fileID: 1722247122}
   - {fileID: 411519101}
   - {fileID: 50153847}
+  - {fileID: 1919394038}
