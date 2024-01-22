@@ -15,9 +15,12 @@ public class LeaderBOard : MonoBehaviour
     public TMP_Text username;
     public CheckPoints checkpoints;
     public Saveoad saveLoad;
-    private string publicLeaderBoardKey = 
-    "b4fa2ac64019ba32716a56b29e6dd19567c9754b76522bb15898f530e2f29bbf";
+    public string publicLeaderBoardKey;
+    // public key map 1
+    // "b4fa2ac64019ba32716a56b29e6dd19567c9754b76522bb15898f530e2f29bbf";
 
+    //public key map 2
+    //a0c6bf68f52808add341859a3c2c0365363f98bd4cd86109c61da802b7a28c32
     public void Start()
     {
         GetLeaderBoard();

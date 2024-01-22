@@ -13,6 +13,7 @@ public class RaycastHandInGame : MonoBehaviour
     public LayerMask keyBoardLayer;
     public LayerMask nameInputField;
     public LayerMask submit;
+    public LayerMask goHomeButton;
     public RaycastHit hit;
     public float rayLenght;
     public bool isPressed;
@@ -96,8 +97,21 @@ public class RaycastHandInGame : MonoBehaviour
             {
                 isPressed = false;
             }
-           
+
             
+            if (Physics.Raycast(ray, out hit, rayLenght, goHomeButton))
+            {
+                if (OVRInput.GetUp(OVRInput.Button.One, OVRInput.Controller.LTouch))
+                {
+                    Button button = hit.collider.GetComponent<Button>();
+                    if (button != null)
+                    {
+                        button.onClick.Invoke();
+                    }
+                }
+
+            }
+
         }
         
         
