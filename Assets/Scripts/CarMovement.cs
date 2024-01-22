@@ -24,6 +24,7 @@ public class CarMovement : MonoBehaviour
     public bool brake;
 
     public float horsePower;
+    public float downForcePower;
     public float gasInput;
     public float steeringInput;
     public float gasinputVR;
@@ -58,7 +59,7 @@ public class CarMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.AddForce(-transform.up  *2, ForceMode.Force);
+        rb.AddForce(-transform.up  *downForcePower, ForceMode.Force);
         speed = rb.velocity.magnitude;
         checkInput();
         if (controller.leftHandOnWheelReadyToLetGo == true || controller.rightHandOnWheelReadyToLetGo == true)

@@ -30,6 +30,7 @@ public class CheckPoints : MonoBehaviour
     public AudioSource notificationGoinThroughCheckpoint;
     public AudioClip notificationSound;
     public AudioClip fireWorks;
+    public bool noemmaariets = true;
     #endregion
 
     private void Start()
@@ -45,12 +46,18 @@ public class CheckPoints : MonoBehaviour
         if (Saveoad.checkpointsNeeded.Count == 0)
         {
             panelWin.SetActive(true);
-            notificationGoinThroughCheckpoint.PlayOneShot(fireWorks);
+           
+            if(noemmaariets)
+            {
+                notificationGoinThroughCheckpoint.PlayOneShot(fireWorks);
+                noemmaariets = false;
+            }
             hasFinished = true;
             HasFinishedCeck();
             //lapped all checkpoints
             inGameRaycast.enabled = true;
             carMovement.enabled = false;
+            
           
         }
 
