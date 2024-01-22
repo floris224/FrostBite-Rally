@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1784851328521458142}
   - component: {fileID: 1038072026432144748}
   - component: {fileID: 2463975249222504662}
+  - component: {fileID: 680664260682809004}
   m_Layer: 0
   m_Name: Tree3_LOD3
   m_TagString: Untagged
@@ -93,3 +94,24 @@ Tree:
   m_GameObject: {fileID: 5892059627724836184}
   m_SpeedTreeWindAsset: {fileID: 0}
   m_TreeData: {fileID: 0}
+--- !u!65 &680664260682809004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892059627724836184}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3615112, y: 20.268257, z: 1.8244781}
+  m_Center: {x: -0.075042725, y: 9.827007, z: 0.07123566}
