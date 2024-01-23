@@ -23,11 +23,7 @@ public class RaycastHand : MonoBehaviour
         {
             lineRenderer = gameObject.AddComponent<LineRenderer>();
         }
-        lineRenderer.material = new Material(Shader.Find("Standard"));
-        lineRenderer.startColor = Color.green;
-        lineRenderer.endColor = Color.green;
-        lineRenderer.startWidth = 0.009f;
-        lineRenderer.endWidth = 0.009f;
+      
     }
 
     // Update is called once per frame

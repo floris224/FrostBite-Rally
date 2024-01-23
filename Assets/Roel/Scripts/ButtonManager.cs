@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -10,22 +11,29 @@ public class ButtonManager : MonoBehaviour
     public GameObject videoSettingMenu;
     public GameObject creditsMenu;
     public GameObject putOnVR;
+    public GameObject mapSelect;
+    public List<GameObject> maps;
+    public List<GameObject> cars;
+
+    public int listIndex;
     // Start is called before the first frame update
     void Start()
     {
+        listIndex = 0;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        MapSelect();
     }
     public void StartGame()
     {
-        putVrOn.startIsPressed = true;
+        mapSelect.SetActive(true);
+        
         mainMenu.SetActive(false);
-        putOnVR.SetActive(true);
+        
     }
     public void GoToSettings()
     {
@@ -56,5 +64,33 @@ public class ButtonManager : MonoBehaviour
     public void Quit() 
     { 
         Application.Quit();
+    }
+    public void NextMap()
+    {
+
+        maps[listIndex].SetActive(false);
+        cars[listIndex].SetActive(false);
+        listIndex += 1;
+        
+    }
+    public void LastMap()
+    {
+        maps[listIndex].SetActive(false);
+        cars[listIndex].SetActive(false);
+        listIndex -= 1;
+       
+    }
+    public void MapSelect()
+    {
+        maps[listIndex].SetActive(true);
+        cars[listIndex].SetActive(true);
+       
+
+    }
+    public void PlayButton()
+    {
+
+        putVrOn.startIsPressed = true;
+        putOnVR.SetActive(true);
     }
 }

@@ -20,6 +20,7 @@ TagManager:
   - VR
   - Scherm
   - CinemachineTarget
+  - Space
   layers:
   - Default
   - TransparentFX
