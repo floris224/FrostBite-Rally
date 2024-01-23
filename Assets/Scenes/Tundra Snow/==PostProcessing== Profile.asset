@@ -42,7 +42,7 @@ MonoBehaviour:
     m_Value: 6
   dirtTexture:
     m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 2800000, guid: a9624368b8e6a5748b33c42edb0ce6ec, type: 3}
     dimension: 1
   dirtIntensity:
     m_OverrideState: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: -20
+    m_Value: 0
   tint:
     m_OverrideState: 0
     m_Value: 0
