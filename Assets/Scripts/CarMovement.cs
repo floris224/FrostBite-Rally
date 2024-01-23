@@ -32,7 +32,7 @@ public class CarMovement : MonoBehaviour
     public float brakeTorqueR;
     public float brakeTorgue;
     public float brakeInput;
-    private float speed;
+    public float speed;
     //public float driftAngle;
     public float maxRotation;
     public AnimationCurve steeringCurve;

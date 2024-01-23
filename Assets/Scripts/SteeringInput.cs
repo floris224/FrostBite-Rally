@@ -13,8 +13,11 @@ public class SteeringInput : MonoBehaviour
     public GameObject car;
     public GameObject steeringWheel;
     public float bothHandRot;
+    public clampHand clampedHand;
+
+    public float maxrotation = 70;
     #endregion
-  
+
     void LateUpdate()
     {
        
@@ -45,16 +48,21 @@ public class SteeringInput : MonoBehaviour
        }
        if(inputGiver.leftHandOnWheelReadyToLetGo== true && inputGiver.rightHandOnWheelReadyToLetGo == true)
        {
-            float handRotL = handL.localRotation.eulerAngles.z;
+            float handRotL = Mathf.Clamp(handL.localRotation.eulerAngles.z, -360, 360);
+            float handRotR = Mathf.Clamp(-handR.localRotation.eulerAngles.z, -360, 360);
 
-            //Testing
-            float handRotR = -handR.localRotation.eulerAngles.z;
-            float bothHandRotation = handRotL - handRotR;
-           
-            transform.localRotation = Quaternion.Euler(0, 0, bothHandRotation);
-       }
+            float bothHandRotation = Mathf.DeltaAngle(handRotL, handRotR);
+
+            float clampedRotation = Mathf.Clamp(bothHandRotation, -maxrotation, maxrotation); 
+            transform.localRotation = Quaternion.Euler(0, 0, handRotL - clampedRotation);
+
+
+
+        }
+
         
+
     }
 
-    
+   
 }

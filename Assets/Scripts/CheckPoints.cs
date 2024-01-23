@@ -31,6 +31,7 @@ public class CheckPoints : MonoBehaviour
     public AudioClip notificationSound;
     public AudioClip fireWorks;
     public bool noemmaariets = true;
+    public clampHand clamphand;
     #endregion
 
     private void Start()
@@ -46,7 +47,7 @@ public class CheckPoints : MonoBehaviour
         if (Saveoad.checkpointsNeeded.Count == 0)
         {
             panelWin.SetActive(true);
-           
+            clamphand.enabled = false;
             if(noemmaariets)
             {
                 notificationGoinThroughCheckpoint.PlayOneShot(fireWorks);

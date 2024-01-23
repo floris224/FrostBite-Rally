@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class uiGOHome : MonoBehaviour
 {
+    private void Update()
+    {
+       
+    }
 
     public void ButtonGoHome()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        Debug.Log("FUCK YOU UNITY");
+        SceneManager.LoadScene(0);
+        
     }
 }
