@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8319103384176017655}
   - component: {fileID: 4082919810922077635}
   - component: {fileID: 8706270900282662100}
-  - component: {fileID: 8826529736243604686}
   - component: {fileID: 7668630635455660977}
   m_Layer: 0
   m_Name: Tree2_LOD3
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ccb7d2cbf49d6aa4495819e53c130c09, type: 2}
+  - {fileID: 2100000, guid: 35eed68eb2f4e0b428103545b79b05e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,15 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!193 &8826529736243604686
-Tree:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7825973401535420649}
-  m_SpeedTreeWindAsset: {fileID: 0}
-  m_TreeData: {fileID: 0}
 --- !u!65 &7668630635455660977
 BoxCollider:
   m_ObjectHideFlags: 0
