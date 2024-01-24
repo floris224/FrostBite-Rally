@@ -6,9 +6,9 @@ using UnityEngine;
 public class SaveLoadMAp2 : MonoBehaviour
 {
 
-    public CheckPoints[] checkPoints;
+    public CheckPointsMap2[] checkPoints;
     public int checkPointIdex;
-    public CheckPoints checkPointsScript;
+    public CheckPointsMap2 checkPointsScript;
     
 
     public float[] loadTime;
@@ -25,7 +25,7 @@ public class SaveLoadMAp2 : MonoBehaviour
         {
             DeletaAllDataPrefs();
             Debug.Log("DeletedData");
-            foreach (CheckPoints checkPoint in checkPoints)
+            foreach (CheckPointsMap2 checkPoint in checkPoints)
             {
                 checkPoint.firstRun = true;
                 break;
