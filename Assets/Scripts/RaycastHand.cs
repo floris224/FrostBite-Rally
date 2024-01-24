@@ -31,7 +31,7 @@ public class RaycastHand : MonoBehaviour
     {
       
         PeformRaycast();
-        //CheckUIInteraction();
+        
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1,transform.position + transform.forward * rayLenght);
         
@@ -48,7 +48,7 @@ public class RaycastHand : MonoBehaviour
                 {
                 
 
-                    if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
+                    if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
                     {
 
                         Button button = hit.collider.GetComponent<Button>();
@@ -76,10 +76,6 @@ public class RaycastHand : MonoBehaviour
         }
 
     }
-   /* void CheckUIInteraction()
-    {
-       
-    }
-   */
+   
     
 }

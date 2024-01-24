@@ -12,7 +12,11 @@ public class ResetCar : MonoBehaviour
    
     public void ResetScene()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        if(OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex);
+        }
+        
     }
 }

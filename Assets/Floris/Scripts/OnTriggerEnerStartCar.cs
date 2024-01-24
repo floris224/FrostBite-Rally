@@ -8,14 +8,19 @@ public class OnTriggerEnerStartCar : MonoBehaviour
     public AudioSource startCarAudioSource;
     public bool isCarStarted = false;
     public StartRaceTimer startRaceTimer;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerHandR"))
+        if (!isCarStarted)
         {
-            startCarAudioSource.PlayOneShot(startCar);
-            isCarStarted = true;
-            
+            if (other.CompareTag("PlayerHandR"))
+            {
+                startCarAudioSource.PlayOneShot(startCar);
+                isCarStarted = true;
+
+            }
         }
+     
     }
     private void Update()
     {

@@ -21,6 +21,8 @@ TagManager:
   - Scherm
   - CinemachineTarget
   - Space
+  - LongRight
+  - LongLeft
   layers:
   - Default
   - TransparentFX

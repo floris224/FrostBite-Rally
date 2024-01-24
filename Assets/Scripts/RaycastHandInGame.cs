@@ -42,7 +42,7 @@ public class RaycastHandInGame : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(ray, out hit, rayLenght, submit))
         {
-            if (OVRInput.GetUp(OVRInput.Button.One, OVRInput.Controller.LTouch))
+            if (OVRInput.GetUp(OVRInput.Button.One, OVRInput.Controller.RTouch))
             {
                 Button button = hit.collider.GetComponent<Button>();
                 if(button != null)
@@ -55,7 +55,7 @@ public class RaycastHandInGame : MonoBehaviour
         
         if (Physics.Raycast(ray, out hit, rayLenght, nameInputField))
         {
-            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
+            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
             {
                 keyboardPanel.SetActive(true);
                 leaderBoardPanel.SetActive(false);
@@ -65,7 +65,7 @@ public class RaycastHandInGame : MonoBehaviour
        
         if (Physics.Raycast(ray, out hit, rayLenght, keyBoardLayer))
         {
-            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
+            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
             {
                 
                 KeyPress pressedKey = hit.collider.GetComponent<KeyPress>();
@@ -99,22 +99,28 @@ public class RaycastHandInGame : MonoBehaviour
             }
 
             
-            if (Physics.Raycast(ray, out hit, rayLenght, goHomeButton))
-            {
-                if (OVRInput.GetUp(OVRInput.Button.One, OVRInput.Controller.LTouch))
-                {
-                    Button button = hit.collider.GetComponent<Button>();
-                    if (button != null)
-                    {
-                        button.onClick.Invoke();
-                    }
-                }
+            
 
+        }
+        if (Physics.Raycast(ray, out hit, rayLenght, goHomeButton))
+        {
+            if (OVRInput.GetUp(OVRInput.Button.One, OVRInput.Controller.RTouch))
+            {
+                Button button = hit.collider.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.Invoke();
+                    Debug.Log(button.name);
+                }
+                else
+                {
+                    Debug.Log("NotFoundButton");
+                }
             }
 
         }
-        
-        
+
+
     }
    
 }

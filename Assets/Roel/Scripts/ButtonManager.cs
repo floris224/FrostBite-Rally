@@ -14,22 +14,29 @@ public class ButtonManager : MonoBehaviour
     public GameObject mapSelect;
     public List<GameObject> maps;
     public List<GameObject> cars;
-
+    public List<GameObject> mapScenes;
+    public bool startPressed;
+    public bool putVROn = true;
     public int listIndex;
     // Start is called before the first frame update
     void Start()
     {
-        listIndex = 0;
+        listIndex = 1;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        MapSelect();
+        if (startPressed && !putVROn == true)
+        {
+            MapSelect();
+        }
+       
     }
     public void StartGame()
     {
+        startPressed = true;
         mapSelect.SetActive(true);
         
         mainMenu.SetActive(false);
@@ -48,6 +55,8 @@ public class ButtonManager : MonoBehaviour
     }
     public void GoToMainMenu() 
     {
+        startPressed = false;
+        creditsMenu.SetActive(false);
         settingMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
@@ -69,8 +78,10 @@ public class ButtonManager : MonoBehaviour
     {
 
         maps[listIndex].SetActive(false);
+
         cars[listIndex].SetActive(false);
         listIndex += 1;
+        maps[listIndex].SetActive(true);
         
     }
     public void LastMap()
@@ -78,7 +89,8 @@ public class ButtonManager : MonoBehaviour
         maps[listIndex].SetActive(false);
         cars[listIndex].SetActive(false);
         listIndex -= 1;
-       
+        maps[listIndex].SetActive(true);
+
     }
     public void MapSelect()
     {
@@ -89,7 +101,8 @@ public class ButtonManager : MonoBehaviour
     }
     public void PlayButton()
     {
-
+        mapScenes[listIndex].SetActive(false);
+        putVROn = true;
         putVrOn.startIsPressed = true;
         putOnVR.SetActive(true);
     }

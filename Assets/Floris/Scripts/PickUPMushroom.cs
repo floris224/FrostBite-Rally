@@ -20,6 +20,7 @@ public class PickUPMushroom : MonoBehaviour
             realHandsL.SetActive(false);
             fakeHandsL.SetActive(true);
             lHand = other.gameObject;
+            lHandIn = true;
 
         }
         else if (other.CompareTag("PlayerHandR"))
@@ -27,6 +28,7 @@ public class PickUPMushroom : MonoBehaviour
             realHandsR.SetActive(true);
             fakeHandsR.SetActive(true);
             rHand = other.gameObject;
+            rHandIn = true;
         }
 
     }
